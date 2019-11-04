@@ -40,7 +40,7 @@ function Login({ history }) {
       });
       if (response.status === 200) {
         dispatch(logIn(id));
-        history.push('/home');
+        history.push('/');
       }
     } catch (error) {
       const { response } = error;

@@ -6,11 +6,10 @@ function withAuth(ComponentToProtect) {
   return function({ history }) {
     const [loading, setLoading] = useState(true);
     const isLoggedIn = useSelector(state => state.isLoggedIn);
-
     useEffect(() => {
       const checkToken = async () => {
         try {
-          const response = postToken();
+          const response = await postToken();
           if (response.status === 200 && isLoggedIn.check) {
             setLoading(false);
           } else {
@@ -21,10 +20,10 @@ function withAuth(ComponentToProtect) {
         }
       };
       checkToken();
-    }, []);
+    }, [isLoggedIn]);
 
     if (loading) {
-      return null;
+      return <div>로딩</div>;
     }
     return (
       <>
