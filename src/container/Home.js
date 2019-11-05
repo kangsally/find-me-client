@@ -1,11 +1,15 @@
 import React from 'react';
 
-function Home() {
+function Home({ history }) {
+  console.log(history);
+  const onClick = () => {
+    history.push('/game');
+  };
   return (
     <div>
       home
       <div>
-        <button>시작하기</button>
+        <button onClick={onClick}>시작하기</button>
       </div>
     </div>
   );

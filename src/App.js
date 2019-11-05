@@ -5,6 +5,7 @@ import withAuth from './components/withAuth';
 import Home from './container/Home';
 import Join from './container/Join';
 import Login from './container/Login';
+import Game from './container/Game';
 import { logOut, loadingApp } from './actions';
 import './App.css';
 
@@ -14,8 +15,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(loadingApp);
-    }, 7000);
-    console.log(5)
+    }, 1000);
   }, []);
 
   const onClick = () => {
@@ -34,9 +34,10 @@ function App() {
         <div>나를 찾아줘</div>
       ) : (
         <Switch>
-          <Route path="/" exact component={withAuth(Home)} />
-          <Route path="/login" component={Login} />
-          <Route path="/join" component={Join} />
+          <Route exact path="/" component={withAuth(Home)} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/join" component={Join} />
+          <Route exact path="/game" component={withAuth(Game)} />
         </Switch>
       )}
     </div>

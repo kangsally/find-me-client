@@ -43,6 +43,7 @@ function Login({ history }) {
         history.push('/');
       }
     } catch (error) {
+      console.log(error);
       const { response } = error;
       if (response.data.error === 'Incorrect id') {
         setIdError('존재하지 않는 아이디입니다.');
