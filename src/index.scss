@@ -1,12 +1,24 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
 html,
-// body {
-//   height: 100%;
-// }
+body {
+  height: 100vh;
+  margin: 0px;
+  font-family: 'Nanum Brush Script', serif;
+}
 
 button,
 input {
   outline: none;
   cursor: pointer;
-  // border: none;
   background: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+#root {
+  height: 100vh;
+  background-color: #b3cdda;
 }

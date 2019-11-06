@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from '../components/LoginForm';
 import { typeLoginForm, logIn } from '../actions';
 import { postLogin } from '../api';
+import './Login.scss';
 
 function Login({ history }) {
   const [idError, setIdError] = useState('');
@@ -55,7 +56,7 @@ function Login({ history }) {
   };
 
   return (
-    <LoginForm
+    <LoginForm 
       onChange={onChange}
       onSubmit={onSubmit}
       idError={idError}
