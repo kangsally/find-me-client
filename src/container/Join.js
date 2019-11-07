@@ -40,7 +40,7 @@ function Join({ history }) {
 
     if (!passwordReg.test(password)) {
       setPwError(
-        '패스워드는 숫자와 영문 포함 6자 이상 10자 이하로 입력해주세요.'
+        '숫자와 영문 포함 6자-10자 입력해주세요.'
       );
       return;
     }

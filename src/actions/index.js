@@ -3,7 +3,8 @@ import {
   TYPE_LOGIN_FORM,
   LOG_IN,
   LOG_OUT,
-  LOADING_APP
+  LOADING_APP,
+  START_GAME
 } from '../constants/actionTypes';
 
 export const typeJoinForm = ({ name, value }) => ({
@@ -18,9 +19,10 @@ export const typeLoginForm = ({ name, value }) => ({
   value
 });
 
-export const logIn = id => ({
+export const logIn = (id, point) => ({
   type: LOG_IN,
-  id
+  id,
+  point
 });
 
 export const logOut = {
@@ -29,4 +31,9 @@ export const logOut = {
 
 export const loadingApp = {
   type: LOADING_APP
-}
+};
+
+export const startGame = role => ({
+  type: START_GAME,
+  role
+});

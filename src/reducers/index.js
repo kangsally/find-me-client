@@ -3,7 +3,8 @@ import {
   TYPE_LOGIN_FORM,
   LOG_IN,
   LOG_OUT,
-  LOADING_APP
+  LOADING_APP,
+  START_GAME
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -18,8 +19,15 @@ const initialState = {
     password: ''
   },
   isLoggedIn: {
-    check: false,
-    id: ''
+    check: false
+  },
+  user: {
+    id: '',
+    point: 0
+  },
+  game:{
+    isStarted: false,
+    role: ''
   }
 };
 
@@ -40,21 +48,39 @@ function reducer(state = initialState, action) {
     case LOG_IN:
       return Object.assign({}, state, {
         isLoggedIn: {
-          check: true,
-          id: action.id
+          check: true
+        },
+        user: {
+          id: action.id,
+          point: action.point
+        },
+        login: {
+          id: '',
+          password: ''
         }
       });
     case LOG_OUT:
       return Object.assign({}, state, {
         isLoggedIn: {
-          check: false,
-          id: ''
+          check: false
+        },
+        user: {
+          id: '',
+          point: 0
         }
       });
     case LOADING_APP:
       return Object.assign({}, state, {
         initialLoading: true
+      });
+    case START_GAME:
+      return Object.assign({}, state, {
+        game: {
+          isStarted: true,
+          role: action.role
+        }
       })
+
     default:
       return state;
   }

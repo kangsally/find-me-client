@@ -3,3 +3,4 @@ export const TYPE_LOGIN_FORM = 'TYPE_LOGIN_FORM';
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const LOADING_APP = 'LOADING_APP';
+export const START_GAME = 'START_GAME';

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoginForm from '../components/LoginForm';
 import { typeLoginForm, logIn } from '../actions';
 import { postLogin } from '../api';
-import './Login.scss';
 
 function Login({ history }) {
   const [idError, setIdError] = useState('');
@@ -39,18 +38,22 @@ function Login({ history }) {
         id: id,
         password: password
       });
+      console.log(response);
       if (response.status === 200) {
-        dispatch(logIn(id));
+        dispatch(logIn(response.data.id, response.data.point));
         history.push('/');
       }
     } catch (error) {
-      console.log(error);
-      const { response } = error;
-      if (response.data.error === 'Incorrect id') {
-        setIdError('존재하지 않는 아이디입니다.');
-      }
-      if (response.data.error === 'Incorrect password') {
-        setPwError('비밀번호가 일치하지 않습니다.');
+      if(error.response){
+        const { response } = error;
+        if (response.data.error === 'Incorrect id') {
+          setIdError('존재하지 않는 아이디입니다.');
+        }
+        if (response.data.error === 'Incorrect password') {
+          setPwError('비밀번호가 일치하지 않습니다.');
+        }
+      }else{
+        console.log(error);
       }
     }
   };

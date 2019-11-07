@@ -1,7 +1,7 @@
 export const getGeoLocation = socket => {
   let temp;
   const successCallBack = position => {
-    console.log(position);
+    // console.log(new Date(position.timestamp));
     socket.emit('userLocation', { 
       lat: position.coords.latitude,
       lon: position.coords.longitude
@@ -12,9 +12,9 @@ export const getGeoLocation = socket => {
   };
 
   const options = {
-    enableHighAccuracy: false,
+    enableHighAccuracy: true,
     // timeout: 0,
-    // maximumAge: 0
+    maximumAge: 0,
   };
 
   if (navigator.geolocation) {

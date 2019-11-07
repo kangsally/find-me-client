@@ -1,0 +1,71 @@
+$blue-color: #003d61;
+$border: 2px solid black;
+$nanum: 'Nanum Pen Script', serif;
+
+.home-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  width: 100vw;
+  height: 15vh;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  background-color: $blue-color;
+}
+
+.title-box {
+  width: 50vw;
+  margin-left: 5vw;
+  margin-right: 22vw;
+  // font-size: 5vh;
+  p {
+    text-align: left;
+  }
+}
+
+.user-box {
+  width: 30vw;
+}
+
+.id {
+  margin: 1vh;
+  font-size: 7vh;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+}
+
+.point {
+  margin: 0vh;
+  font-size: 3vh;
+  color: white;
+}
+
+.logout-button {
+  margin: 1vh;
+  border: $border;
+  font-size: 2.5vh;
+  background-color: #a36131;
+  font-family: $nanum;
+}
+
+.start-button-div {
+  margin: 30vh auto;
+  button {
+    width: 40vw;
+    height: 15vh;
+    border: $border;
+    background-color: #a98d75;
+    font-size: 5vh;
+    font-family: $nanum;
+    &:hover {
+      font-size: 0vh;
+    }
+    &:hover:after {
+      content: attr(text-hover);
+      font-size: vh;
+    }
+  }
+}

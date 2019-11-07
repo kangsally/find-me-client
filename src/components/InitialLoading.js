@@ -15,11 +15,11 @@ function InitialLoading() {
       if (i < titleName.length) {
         setTitle(title => (title += titleName.charAt(i)));
         i++;
-        setTimeout(typeTitle, 700);
+        setTimeout(typeTitle, 500);
         if (i === titleName.length) {
           setTimeout(() => {
             dispatch(loadingApp);
-          }, 2000);
+          }, 1000);
         }
       }
     };

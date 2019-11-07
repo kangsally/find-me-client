@@ -23,20 +23,13 @@ function App() {
       {!initialLoading ? (
         <InitialLoading />
       ) : (
-        <>
-          <div>
-            <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/join">Join</Link>
-            <button onClick={onClick}>로그아웃</button>
-          </div>
           <Switch>
             <Route exact path="/" component={withAuth(Home)} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/join" component={Join} />
             <Route exact path="/game" component={withAuth(Game)} />
           </Switch>
-        </>
+
       )}
     </div>
   );

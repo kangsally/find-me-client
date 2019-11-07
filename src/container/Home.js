@@ -1,17 +1,25 @@
 import React from 'react';
+import HomeDiv from '../components/HomeDiv';
+import { useSelector, useDispatch } from 'react-redux';
+import { logOut } from '../actions';
 
 function Home({ history }) {
-  console.log(history);
-  const onClick = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
+
+  const onClickLogout = () => {
+    dispatch(logOut);
+  };
+  const onClickStartGame = () => {
     history.push('/game');
   };
   return (
-    <div>
-      home
-      <div>
-        <button onClick={onClick}>시작하기</button>
-      </div>
-    </div>
+    <HomeDiv
+      logout={onClickLogout}
+      startGame={onClickStartGame}
+      id={user.id}
+      point={user.point}
+    ></HomeDiv>
   );
 }
 
