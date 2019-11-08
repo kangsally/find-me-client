@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client';
 import GameWaiting from '../components/GameWaiting';
-import Hide from '../components/Hide';
+import Hide from './Hide';
+import Seek from './Seek';
 import { SOCKET_API } from '../api/sockets';
 import { getGeoLocation } from '../utils/getGeoLocation';
 import { startGame } from '../actions';
@@ -17,12 +18,12 @@ function Game() {
     const socket = io(SOCKET_API);
     const connectToSocket = () => {
       socket.emit('userInfo', { id: user.id });
-      getGeoLocation(socket);
+      getGeoLocation(socket, 'userLocation');
       socket.on('start', data => {
         const role = _.findKey(data, value => {
           return value === user.id;
         });
-        dispatch(startGame(role));
+        dispatch(startGame(role, socket));
       });
     };
     connectToSocket();
@@ -34,9 +35,9 @@ function Game() {
     return <GameWaiting />;
   } else {
     if (game.role === 'hide') {
-      return <Hide>숨는사람</Hide>;
+      return <Hide/>
     } else if (game.role === 'seek') {
-      return <div>찾는 사람</div>;
+      return <Seek/>;
     }
   }
 }

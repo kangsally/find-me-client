@@ -1,8 +1,8 @@
-export const getGeoLocation = socket => {
+export const getGeoLocation = (socket, socketName) => {
   let temp;
   const successCallBack = position => {
     // console.log(new Date(position.timestamp));
-    socket.emit('userLocation', { 
+    socket.emit(`${socketName}`, { 
       lat: position.coords.latitude,
       lon: position.coords.longitude
     });

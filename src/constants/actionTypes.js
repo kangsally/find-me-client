@@ -4,3 +4,6 @@ export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 export const LOADING_APP = 'LOADING_APP';
 export const START_GAME = 'START_GAME';
+export const TAKE_PHOTO = 'TAKE_PHOTO';
+export const SEND_PHOTO = 'SEND_PHOTO';
+export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';

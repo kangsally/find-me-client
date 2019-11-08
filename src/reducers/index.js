@@ -4,7 +4,10 @@ import {
   LOG_IN,
   LOG_OUT,
   LOADING_APP,
-  START_GAME
+  START_GAME,
+  TAKE_PHOTO,
+  SEND_PHOTO,
+  RECEIVE_PHOTO
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -25,9 +28,20 @@ const initialState = {
     id: '',
     point: 0
   },
-  game:{
+  game: {
     isStarted: false,
-    role: ''
+    role: '',
+    socket: null
+  },
+  hide: {
+    ready: false,
+    photo: [],
+    response: false
+  },
+  seek: {
+    ready: false,
+    photo: [],
+    response: false
   }
 };
 
@@ -77,7 +91,29 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         game: {
           isStarted: true,
-          role: action.role
+          role: action.role,
+          socket: action.socket
+        }
+      });
+    case TAKE_PHOTO:
+      const photo = state.hide.photo.slice();
+      photo.push(action.photo);
+      return Object.assign({}, state, {
+        hide: {
+          photo: photo
+        }
+      });
+    case SEND_PHOTO:
+      return Object.assign({}, state, {
+        hide: {
+          ready: true
+        }
+      });
+    case RECEIVE_PHOTO:
+      return Object.assign({}, state, {
+        seek: {
+          ready: true,
+          photo: action.photo,
         }
       })
 

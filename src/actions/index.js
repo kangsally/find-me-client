@@ -4,7 +4,10 @@ import {
   LOG_IN,
   LOG_OUT,
   LOADING_APP,
-  START_GAME
+  START_GAME,
+  TAKE_PHOTO,
+  SEND_PHOTO,
+  RECEIVE_PHOTO
 } from '../constants/actionTypes';
 
 export const typeJoinForm = ({ name, value }) => ({
@@ -33,7 +36,22 @@ export const loadingApp = {
   type: LOADING_APP
 };
 
-export const startGame = role => ({
+export const startGame = (role, socket) => ({
   type: START_GAME,
-  role
+  role,
+  socket
+});
+
+export const takePhoto = photo => ({
+  type: TAKE_PHOTO,
+  photo
+});
+
+export const sendPhoto = {
+  type: SEND_PHOTO
+};
+
+export const receivePhoto = photo => ({
+  type: RECEIVE_PHOTO,
+  photo
 });

@@ -1,0 +1,17 @@
+.img-box {
+  width: 60vw;
+  height: 30vh;
+  display: inline-block;
+  img {
+    width: 58vw;
+    height: 28vh;
+  }
+}
+
+.left-button {
+  font-size: 5vh;
+}
+
+.right-button {
+  @extend .left-button;
+}
