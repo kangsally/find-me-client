@@ -5,6 +5,7 @@ import Home from './container/Home';
 import Join from './container/Join';
 import Login from './container/Login';
 import withAuth from './components/withAuth';
+import Map from './components/Map';
 import InitialLoading from './components/InitialLoading';
 import { logOut, loadingApp } from './actions';
 import Game from './container/Game';

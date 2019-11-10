@@ -6,8 +6,14 @@ import {
   LOADING_APP,
   START_GAME,
   TAKE_PHOTO,
-  SEND_PHOTO,
-  RECEIVE_PHOTO
+  SEND_PHOTO_LOCATION,
+  RECEIVE_PHOTO_LOCATION,
+  SEND_SEEK_LOCATION,
+  RECEIVE_SEEK_LOCATION,
+  RECEIVE_END_TIME,
+  TYPE_MESSAGE,
+  SEND_MESSAGE,
+  RECEIVE_MESSAGE
 } from '../constants/actionTypes';
 
 export const typeJoinForm = ({ name, value }) => ({
@@ -47,11 +53,42 @@ export const takePhoto = photo => ({
   photo
 });
 
-export const sendPhoto = {
-  type: SEND_PHOTO
-};
-
-export const receivePhoto = photo => ({
-  type: RECEIVE_PHOTO,
-  photo
+export const sendPhotoLocation = location => ({
+  type: SEND_PHOTO_LOCATION,
+  location
 });
+
+export const receivePhotoLocation = (photo, location) => ({
+  type: RECEIVE_PHOTO_LOCATION,
+  photo,
+  location
+});
+
+export const sendSeekLocation = location => ({
+  type: SEND_SEEK_LOCATION,
+  location
+});
+
+export const receiveSeekLocation = location => ({
+  type: RECEIVE_SEEK_LOCATION,
+  location
+});
+
+export const receiveEndTime = time => ({
+  type: RECEIVE_END_TIME,
+  time
+})
+
+export const typeMessage = message => ({
+  type: TYPE_MESSAGE,
+  message
+})
+
+export const sendMessage = {
+  type: SEND_MESSAGE
+}
+
+export const receiveMessage = message => ({
+  type: RECEIVE_MESSAGE,
+  message
+})

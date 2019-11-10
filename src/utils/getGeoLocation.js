@@ -1,20 +1,27 @@
-export const getGeoLocation = (socket, socketName) => {
+export const getGeoLocation = (socket, socketName, dispatch, action) => {
   let temp;
   const successCallBack = position => {
-    // console.log(new Date(position.timestamp));
-    socket.emit(`${socketName}`, { 
+    socket.emit(`${socketName}`, {
       lat: position.coords.latitude,
-      lon: position.coords.longitude
+      lng: position.coords.longitude
     });
+    if (socketName === 'seekData') {
+      dispatch(
+        action({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        })
+      );
+    }
   };
   const errorCallback = error => {
     console.log(error);
   };
 
   const options = {
-    enableHighAccuracy: true,
+    enableHighAccuracy: false,
     // timeout: 0,
-    maximumAge: 0,
+    maximumAge: 0
   };
 
   if (navigator.geolocation) {
@@ -25,7 +32,8 @@ export const getGeoLocation = (socket, socketName) => {
     );
   }
 
-  setTimeout(() => {
-    navigator.geolocation.clearWatch(temp);
-  }, 50000);
+  // setTimeout(() => {
+  //   navigator.geolocation.clearWatch(temp);
+  // }, 50000);
+  return temp;
 };

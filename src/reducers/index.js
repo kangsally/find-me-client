@@ -6,8 +6,14 @@ import {
   LOADING_APP,
   START_GAME,
   TAKE_PHOTO,
-  SEND_PHOTO,
-  RECEIVE_PHOTO
+  SEND_PHOTO_LOCATION,
+  RECEIVE_PHOTO_LOCATION,
+  SEND_SEEK_LOCATION,
+  RECEIVE_SEEK_LOCATION,
+  RECEIVE_END_TIME,
+  TYPE_MESSAGE,
+  SEND_MESSAGE,
+  RECEIVE_MESSAGE
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -31,17 +37,25 @@ const initialState = {
   game: {
     isStarted: false,
     role: '',
-    socket: null
+    socket: null,
+    endTime: null
   },
   hide: {
     ready: false,
     photo: [],
-    response: false
+    notice: false,
+    partnerLocation: null,
+    myLocation: null,
+    message: '',
+    messageCount: 0
   },
   seek: {
     ready: false,
     photo: [],
-    response: false
+    notice: false,
+    partnerLocation: null,
+    myLocation: null,
+    message: ''
   }
 };
 
@@ -81,6 +95,10 @@ function reducer(state = initialState, action) {
         user: {
           id: '',
           point: 0
+        },
+        login: {
+          id: '',
+          password: ''
         }
       });
     case LOADING_APP:
@@ -92,30 +110,75 @@ function reducer(state = initialState, action) {
         game: {
           isStarted: true,
           role: action.role,
-          socket: action.socket
+          socket: action.socket,
+          endTime: null
         }
       });
     case TAKE_PHOTO:
       const photo = state.hide.photo.slice();
       photo.push(action.photo);
       return Object.assign({}, state, {
-        hide: {
+        hide: Object.assign({}, state.hide, {
           photo: photo
-        }
+        })
       });
-    case SEND_PHOTO:
+
+    case SEND_PHOTO_LOCATION:
       return Object.assign({}, state, {
-        hide: {
-          ready: true
-        }
+        hide: Object.assign({}, state.hide, {
+          ready: true,
+          myLocation: action.location
+        })
       });
-    case RECEIVE_PHOTO:
+
+    case RECEIVE_PHOTO_LOCATION:
       return Object.assign({}, state, {
-        seek: {
+        seek: Object.assign({}, state.seek, {
           ready: true,
           photo: action.photo,
-        }
-      })
+          partnerLocation: action.location
+        })
+      });
+
+    case SEND_SEEK_LOCATION:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          myLocation: action.location
+        })
+      });
+    case RECEIVE_SEEK_LOCATION:
+      return Object.assign({}, state, {
+        hide: Object.assign({}, state.hide, {
+          partnerLocation: action.location
+        })
+      });
+
+    case RECEIVE_END_TIME:
+      return Object.assign({}, state, {
+        game: Object.assign({}, state.game, {
+          endTime: action.time
+        })
+      });
+
+    case TYPE_MESSAGE:
+      return Object.assign({}, state, {
+        hide: Object.assign({}, state.hide, {
+          message: action.message
+        })
+      });
+
+    case SEND_MESSAGE:
+      return Object.assign({}, state, {
+        hide: Object.assign({}, state.hide, {
+          messageCount: (state.hide.messageCount += 1)
+        })
+      });
+    case RECEIVE_MESSAGE:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          message: action.message
+        })
+      });
 
     default:
       return state;

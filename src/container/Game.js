@@ -14,18 +14,21 @@ function Game() {
   const game = useSelector(state => state.game);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect( () => {
     const socket = io(SOCKET_API);
-    const connectToSocket = () => {
+    const connectToSocket = async () => {
       socket.emit('userInfo', { id: user.id });
-      getGeoLocation(socket, 'userLocation');
+      const tempLocation = await getGeoLocation(socket, 'userLocation');
+
       socket.on('start', data => {
         const role = _.findKey(data, value => {
           return value === user.id;
         });
+        navigator.geolocation.clearWatch(tempLocation);
         dispatch(startGame(role, socket));
       });
     };
+
     connectToSocket();
   }, []);
 
@@ -35,9 +38,9 @@ function Game() {
     return <GameWaiting />;
   } else {
     if (game.role === 'hide') {
-      return <Hide/>
+      return <Hide endTime={game.endTime}/>
     } else if (game.role === 'seek') {
-      return <Seek/>;
+      return <Seek endTime={game.endTime}/>;
     }
   }
 }

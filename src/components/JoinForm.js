@@ -3,7 +3,6 @@ import { Link, Route, Switch } from 'react-router-dom';
 import './JoinForm.scss';
 
 const JoinForm = ({ onSubmit, onChange, join, idError, pwError }) => {
-  // console.log(idError, pwError);
   return (
     <div className="container">
     <div className="join-box">
@@ -18,7 +17,7 @@ const JoinForm = ({ onSubmit, onChange, join, idError, pwError }) => {
             name="id"
             value={join.id || ''}
             onChange={onChange}
-            maxLength="5"
+            maxLength="10"
             required
           />
           <div className="error-div">{idError}</div>

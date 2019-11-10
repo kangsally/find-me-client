@@ -10,10 +10,8 @@ function CameraDiv({ takePhotos, photo, sendPhotos }) {
   };
 if (photo.length === 3) {
     sendPhotos();
-    return;
   }
   return (
-
     <div>
       <div className="camera-div">
         <Camera

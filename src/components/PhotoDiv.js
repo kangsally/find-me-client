@@ -21,12 +21,16 @@ function PhotoDiv({ photo }) {
     });
   };
   return (
-    <div>
-      <Icon className="left-button" type="left" onClick={onClickLeft} />
+    <div className="photo-container">
+      <div className="left-button-div">
+        <Icon className="left-button" type="left" onClick={onClickLeft} />
+      </div>
       <div className="img-box">
         <img src={photo[index]} />
       </div>
-      <Icon className="right-button" type="right" onClick={onClickRight} />
+      <div className="right-button-div">
+        <Icon className="right-button" type="right" onClick={onClickRight} />
+      </div>
     </div>
   );
 }

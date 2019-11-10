@@ -1,15 +1,40 @@
+.photo-container{
+  position: relative;
+}
+
 .img-box {
-  width: 60vw;
-  height: 30vh;
+  width: 70vw;
+  height: 40vh;
   display: inline-block;
+  margin: 0 auto;
   img {
-    width: 58vw;
-    height: 28vh;
+    width: 70vw;
+    height: 40vh;
   }
 }
 
+.left-button-div{
+  width: 13vw;
+  height: 40vh;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+  line-height: 40vh;
+}
+
+.right-button-div{
+  width: 13vw;
+  height: 40vh;
+  right: 0;
+  position: absolute;
+  display: inline-block;
+  line-height: 40vh;
+}
+
 .left-button {
-  font-size: 5vh;
+  font-size: 7vh;
+  font-weight: 700;
+  color: white;
 }
 
 .right-button {
