@@ -19,7 +19,7 @@ export const getGeoLocation = (socket, socketName, dispatch, action) => {
   };
 
   const options = {
-    enableHighAccuracy: false,
+    enableHighAccuracy: true,
     // timeout: 0,
     maximumAge: 0
   };
@@ -36,4 +36,15 @@ export const getGeoLocation = (socket, socketName, dispatch, action) => {
   //   navigator.geolocation.clearWatch(temp);
   // }, 50000);
   return temp;
+};
+
+export const getDistance = (myLat, myLng, partnerLat, partnerLng) => {
+  const earthRadius = 6371;
+  const distance =
+    Math.acos(
+      Math.sin(myLat) * Math.sin(partnerLat) +
+        Math.cos(myLat) * Math.cos(partnerLat) * Math.cos(myLng - partnerLng)
+    ) * earthRadius;
+
+  return distance;
 };

@@ -3,31 +3,35 @@ import CameraDiv from '../components/CameraDiv';
 import Counter from '../components/Counter';
 import Map from '../components/Map';
 import Timer from '../components/Timer';
+import SendMessage from '../components/SendMessage';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   takePhoto,
   sendPhotoLocation,
   receiveSeekLocation,
-  receiveEndTime
+  receiveEndTime,
+  typeMessage,
+  sendMessage
 } from '../actions';
-import { getCurrentGeoLocation } from '../utils/getGeoLocation';
 
 function Hide({ endTime }) {
   const hide = useSelector(state => state.hide);
   const socket = useSelector(state => state.game.socket);
   const dispatch = useDispatch();
-  console.log(endTime);
+
   useEffect(() => {
     socket.on('seekData', data => {
       dispatch(receiveSeekLocation(data.location));
     });
     socket.on('notice', data => {
-      dispatch(receiveEndTime(data.time))
+      dispatch(receiveEndTime(data.time));
     });
   });
+
   const takePhotos = photoData => {
     dispatch(takePhoto(photoData));
   };
+
   const sendPhotos = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -50,25 +54,41 @@ function Hide({ endTime }) {
       }
     );
   };
-// console.log(endTime);
+
+  const onChange = event => {
+    const { value, name } = event.target;
+    dispatch(typeMessage(value));
+  };
+
+  const onSubmit = async event => {
+    event.preventDefault();
+    socket.emit('message', { message: hide.message });
+    dispatch(sendMessage);
+  };
+
   if (!hide.ready) {
     return (
-      <>
+      <div className="seek-container">
         <Counter sendPhotos={sendPhotos} />
         <CameraDiv
           takePhotos={takePhotos}
           photo={hide.photo}
           sendPhotos={sendPhotos}
         />
-      </>
+      </div>
     );
   }
   if (endTime && hide.ready && hide.partnerLocation) {
     return (
-      <>
-        <Timer endTime={endTime} />
-        <Map location={hide.partnerLocation} />
-      </>
+      <div className="seek-container">
+        <Timer endTime={endTime} type="hide" />
+        <Map location={hide.partnerLocation} type="hide" />
+        <SendMessage
+          message={hide.message}
+          onChange={onChange}
+          onSubmit={onSubmit}
+        />
+      </div>
     );
   }
 

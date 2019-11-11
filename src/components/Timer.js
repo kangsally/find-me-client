@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.scss';
 
-function Timer({ endTime }) {
+function Timer({ endTime, activateHints, type }) {
   const initialTime = new Date().getTime();
 
   const [time, setTime] = useState({
@@ -12,17 +12,18 @@ function Timer({ endTime }) {
   useEffect(() => {
     const timeId = setInterval(() => {
       const presentTime = new Date().getTime();
+      const milliseconds = endTime - presentTime;
+      const minute = parseInt(milliseconds / 60000);
+      const second = parseInt((milliseconds % 60000) / 1000);
       setTime({
-        minute:
-          parseInt((endTime - presentTime) / 60000) < 10
-            ? '0' + parseInt((endTime - presentTime) / 60000)
-            : parseInt((endTime - presentTime) / 60000),
-        second:
-          parseInt(((endTime - presentTime) % 60000) / 1000) < 10
-            ? '0' + parseInt(((endTime - presentTime) % 60000) / 1000)
-            : parseInt(((endTime - presentTime) % 60000) / 1000)
+        minute: minute < 10 ? '0' + minute : minute,
+        second: second < 10 ? '0' + second : second
       });
+      if (type === 'seek') {
+        activateHints(milliseconds);
+      }
     }, 1000);
+
     return () => clearInterval(timeId);
   }, []);
 

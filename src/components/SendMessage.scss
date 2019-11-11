@@ -1,0 +1,58 @@
+@import './LoginForm.scss';
+
+.message-container {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-box {
+  width: 85vw;
+  height: 12vh;
+  margin: 2.5vh auto;
+  display: inline-block;
+  border: $border;
+  background-color: #a98d75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 60vw;
+    height: 8vh;
+    padding-left: 2vw;
+    border: $border;
+    background-color: white;
+    font-size: 3vh;
+    font-family: $nanum;
+  }
+}
+
+.message-form-div {
+  width: 90vw;
+  height: 9vh;
+  line-height: 9vh;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button {
+    height: 8vh;
+    margin-left: 1vw;
+    border: none;
+  }
+}
+
+// .submit-button-div {
+//   height: 12vh;
+//   display: inline-block;
+//   position: relative;
+//   margin: 0vh;
+//   line-height: 12vh;
+// }
+
+.button {
+  font-size: 7vh;
+}

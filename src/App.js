@@ -5,7 +5,7 @@ import Home from './container/Home';
 import Join from './container/Join';
 import Login from './container/Login';
 import withAuth from './components/withAuth';
-import Map from './components/Map';
+import SendMessage from './components/SendMessage';
 import InitialLoading from './components/InitialLoading';
 import { logOut, loadingApp } from './actions';
 import Game from './container/Game';
@@ -24,15 +24,15 @@ function App() {
       {!initialLoading ? (
         <InitialLoading />
       ) : (
-          <Switch>
-            <Route exact path="/" component={withAuth(Home)} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/join" component={Join} />
-            <Route exact path="/game" component={withAuth(Game)} />
-          </Switch>
-
+        <Switch>
+          <Route exact path="/" component={withAuth(Home)} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/join" component={Join} />
+          <Route exact path="/game" component={withAuth(Game)} />
+        </Switch>
       )}
     </div>
+    // <SendMessage/>
   );
 }
 

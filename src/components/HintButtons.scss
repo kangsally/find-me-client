@@ -1,0 +1,26 @@
+$nanum: 'Nanum Pen Script', serif;
+$border: 2px solid black;
+
+.hint-buttons-container {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    width: 30vw;
+    height: 10vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border: $border;
+    font-size: 4vh;
+    font-family: $nanum;
+  }
+}
+.active {
+  background-color: #f1c40f;
+}
+
+.non-active {
+  background-color: #cdbaac;
+}

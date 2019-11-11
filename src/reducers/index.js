@@ -13,7 +13,13 @@ import {
   RECEIVE_END_TIME,
   TYPE_MESSAGE,
   SEND_MESSAGE,
-  RECEIVE_MESSAGE
+  RECEIVE_MESSAGE,
+  ACTIVATE_FIRST_HINT_BUTTON,
+  ACTIVATE_SECOND_HINT_BUTTON,
+  SHOW_PHOTO,
+  HIDE_PHOTO,
+  SHOW_MAP,
+  HIDE_MAP
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -55,7 +61,12 @@ const initialState = {
     notice: false,
     partnerLocation: null,
     myLocation: null,
-    message: ''
+    hintLocation: null,
+    message: '',
+    firstHint: false,
+    secondHint: false,
+    isShownPhoto: false,
+    isShownMap: false
   }
 };
 
@@ -67,12 +78,14 @@ function reducer(state = initialState, action) {
           [action.name]: action.value
         })
       });
+
     case TYPE_LOGIN_FORM:
       return Object.assign({}, state, {
         login: Object.assign({}, state.login, {
           [action.name]: action.value
         })
       });
+
     case LOG_IN:
       return Object.assign({}, state, {
         isLoggedIn: {
@@ -87,6 +100,7 @@ function reducer(state = initialState, action) {
           password: ''
         }
       });
+
     case LOG_OUT:
       return Object.assign({}, state, {
         isLoggedIn: {
@@ -105,6 +119,7 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         initialLoading: true
       });
+
     case START_GAME:
       return Object.assign({}, state, {
         game: {
@@ -114,6 +129,7 @@ function reducer(state = initialState, action) {
           endTime: null
         }
       });
+
     case TAKE_PHOTO:
       const photo = state.hide.photo.slice();
       photo.push(action.photo);
@@ -136,7 +152,8 @@ function reducer(state = initialState, action) {
         seek: Object.assign({}, state.seek, {
           ready: true,
           photo: action.photo,
-          partnerLocation: action.location
+          partnerLocation: action.location,
+          hintLocation: action.hint
         })
       });
 
@@ -146,6 +163,7 @@ function reducer(state = initialState, action) {
           myLocation: action.location
         })
       });
+
     case RECEIVE_SEEK_LOCATION:
       return Object.assign({}, state, {
         hide: Object.assign({}, state.hide, {
@@ -170,13 +188,57 @@ function reducer(state = initialState, action) {
     case SEND_MESSAGE:
       return Object.assign({}, state, {
         hide: Object.assign({}, state.hide, {
+          message: '',
           messageCount: (state.hide.messageCount += 1)
         })
       });
+
     case RECEIVE_MESSAGE:
       return Object.assign({}, state, {
         seek: Object.assign({}, state.seek, {
           message: action.message
+        })
+      });
+
+    case ACTIVATE_FIRST_HINT_BUTTON:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          firstHint: true
+        })
+      });
+
+    case ACTIVATE_SECOND_HINT_BUTTON:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          secondHint: true
+        })
+      });
+
+    case SHOW_PHOTO:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          isShownPhoto: true
+        })
+      });
+
+    case HIDE_PHOTO:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          isShownPhoto: false
+        })
+      });
+
+    case SHOW_MAP:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          isShownMap: true
+        })
+      });
+
+    case HIDE_MAP:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          isShownMap: false
         })
       });
 

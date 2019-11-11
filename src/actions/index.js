@@ -13,7 +13,13 @@ import {
   RECEIVE_END_TIME,
   TYPE_MESSAGE,
   SEND_MESSAGE,
-  RECEIVE_MESSAGE
+  RECEIVE_MESSAGE,
+  ACTIVATE_FIRST_HINT_BUTTON,
+  ACTIVATE_SECOND_HINT_BUTTON,
+  SHOW_PHOTO,
+  HIDE_PHOTO,
+  SHOW_MAP,
+  HIDE_MAP
 } from '../constants/actionTypes';
 
 export const typeJoinForm = ({ name, value }) => ({
@@ -58,10 +64,11 @@ export const sendPhotoLocation = location => ({
   location
 });
 
-export const receivePhotoLocation = (photo, location) => ({
+export const receivePhotoLocation = (photo, location, hint) => ({
   type: RECEIVE_PHOTO_LOCATION,
   photo,
-  location
+  location,
+  hint
 });
 
 export const sendSeekLocation = location => ({
@@ -77,18 +84,42 @@ export const receiveSeekLocation = location => ({
 export const receiveEndTime = time => ({
   type: RECEIVE_END_TIME,
   time
-})
+});
 
 export const typeMessage = message => ({
   type: TYPE_MESSAGE,
   message
-})
+});
 
 export const sendMessage = {
   type: SEND_MESSAGE
-}
+};
 
 export const receiveMessage = message => ({
   type: RECEIVE_MESSAGE,
   message
-})
+});
+
+export const activateFirstHintButton = {
+  type: ACTIVATE_FIRST_HINT_BUTTON
+};
+
+export const activateSecondHintButton = {
+  type: ACTIVATE_SECOND_HINT_BUTTON
+};
+
+export const showPhoto = {
+  type: SHOW_PHOTO
+};
+
+export const hidePhoto = {
+  type: HIDE_PHOTO
+};
+
+export const showMap = {
+  type: SHOW_MAP
+};
+
+export const hideMap = {
+  type: HIDE_MAP
+};
