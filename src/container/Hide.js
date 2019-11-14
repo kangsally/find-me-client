@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import CameraDiv from '../components/CameraDiv';
 import Counter from '../components/Counter';
 import Map from '../components/Map';
@@ -11,10 +11,11 @@ import {
   receiveSeekLocation,
   receiveEndTime,
   typeMessage,
-  sendMessage
+  sendMessage,
+  finishGame
 } from '../actions';
 
-function Hide({ endTime }) {
+function Hide({ endTime, finish }) {
   const hide = useSelector(state => state.hide);
   const socket = useSelector(state => state.game.socket);
   const dispatch = useDispatch();
@@ -25,6 +26,14 @@ function Hide({ endTime }) {
     });
     socket.on('notice', data => {
       dispatch(receiveEndTime(data.time));
+    });
+    socket.on('seekFinish', ({ result, finishMessage }) => {
+      dispatch(finishGame(result, finishMessage));
+      socket.emit('end', { data: 'finish' });
+    });
+    socket.on('disconnected', ({ result, finishMessage }) => {
+      dispatch(finishGame(result, finishMessage));
+      socket.emit('end', { data: 'finish' });
     });
   });
 
@@ -56,7 +65,7 @@ function Hide({ endTime }) {
   };
 
   const onChange = event => {
-    const { value, name } = event.target;
+    const { value } = event.target;
     dispatch(typeMessage(value));
   };
 
@@ -69,15 +78,17 @@ function Hide({ endTime }) {
   if (!hide.ready) {
     return (
       <div className="seek-container">
-        <Counter sendPhotos={sendPhotos} />
+        <Counter sendPhotos={sendPhotos} finish={finish} photo={hide.photo} />
         <CameraDiv
           takePhotos={takePhotos}
           photo={hide.photo}
           sendPhotos={sendPhotos}
+          finish={finish}
         />
       </div>
     );
   }
+
   if (endTime && hide.ready && hide.partnerLocation) {
     return (
       <div className="seek-container">

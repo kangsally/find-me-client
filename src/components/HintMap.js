@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Map from './Map.js';
 import './HintMap.scss';
 
-function HintMap({ hint }) {
+function HintMap({ hint, onClinkHideMap }) {
   const [place, setPlace] = useState(null);
   const onClick = category => {
-    if (category === 'cafe') {
+    if (category === 'restaurant') {
       setPlace(hint[0]);
     }
     if (category === 'bank') {
@@ -18,7 +18,12 @@ function HintMap({ hint }) {
   if (place) {
     return (
       <div className="hint-container">
-        <div className="header"> </div>
+        <div className="hint-header">
+          <div className="hide-map-button-div">
+            <button onClick={onClinkHideMap}>닫기</button>
+          </div>
+          <div className="place-box">{`나와 가장 가까운 ${place.category_group_name}은 ${place.place_name}이야!`}</div>
+        </div>
         <Map
           location={{
             lng: place.x,
@@ -34,10 +39,10 @@ function HintMap({ hint }) {
     <div className="hint-container">
       <button
         onClick={() => {
-          onClick('cafe');
+          onClick('restaurant');
         }}
       >
-        카페
+        식당
       </button>
       <button
         onClick={() => {

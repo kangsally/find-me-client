@@ -1,0 +1,60 @@
+$nanum: 'Nanum Pen Script', serif;
+$blue-color: #003d61;
+$background-color: #a98d75;
+// border: 0.5vw solid black;
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+
+.ending-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ending-box {
+  width: 80vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5vw solid black;
+  background-color: #a98d75;
+}
+
+.result-title {
+  width: 70vw;
+  height: 20vh;
+  line-height: 25vh;
+  text-align: center;
+  font-size: 12vh;
+}
+
+.result-message {
+  width: 70vw;
+  height: 10vh;
+  line-height: 15vh;
+  text-align: center;
+  font-size: 3vh;
+}
+
+.home-button-div {
+  width: 70vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    width: 25vw;
+    height: 7vh;
+    border: 0.5vw solid black;
+    background-color: #cdbaac;
+    font-size: 4vh;
+    font-family: $nanum;
+  }
+}

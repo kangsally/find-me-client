@@ -1,1 +1,21 @@
 @import './SendMessage.scss';
+
+.recieve-message-box {
+  width: 85vw;
+  height: 12vh;
+  margin: 2.5vh auto;
+  display: inline-block;
+  border: $border;
+  background-color: #a98d75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.receive-message-container {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   receivePhotoLocation,
@@ -10,7 +10,8 @@ import {
   showPhoto,
   hidePhoto,
   showMap,
-  hideMap
+  hideMap,
+  finishGame
 } from '../actions';
 import PhotoDiv from '../components/PhotoDiv';
 import Timer from '../components/Timer';
@@ -20,24 +21,28 @@ import HintMap from '../components/HintMap';
 import { postLocation } from '../api';
 import { getGeoLocation, getDistance } from '../utils/getGeoLocation';
 
-function Seek({ endTime }) {
+function Seek({ endTime, finish }) {
   const seek = useSelector(state => state.seek);
   const socket = useSelector(state => state.game.socket);
   const dispatch = useDispatch();
-  let tempLocation;
 
   useEffect(() => {
     socket.on('hideData', async data => {
       const facilityLocation = await postLocation(data.location);
-
-      dispatch(
-        receivePhotoLocation(data.photo, data.location, facilityLocation.data.data)
-      );
-      tempLocation = await getGeoLocation(
+      const geoLocationId = await getGeoLocation(
         socket,
         'seekData',
         dispatch,
         sendSeekLocation
+      );
+
+      dispatch(
+        receivePhotoLocation(
+          data.photo,
+          data.location,
+          facilityLocation.data.data,
+          geoLocationId
+        )
       );
       socket.emit('notice', { recieve: 'ok' });
       socket.on('notice', data => {
@@ -46,6 +51,14 @@ function Seek({ endTime }) {
       socket.on('message', data => {
         dispatch(receiveMessage(data.message));
       });
+    });
+    socket.on('hideFinish', ({ result, finishMessage }) => {
+      dispatch(finishGame(result, finishMessage));
+      socket.emit('end', { data: 'finish' });
+    });
+    socket.on('disconnected', ({ result, finishMessage }) => {
+      dispatch(finishGame(result, finishMessage));
+      socket.emit('end', { data: 'finish' });
     });
   }, []);
 
@@ -80,14 +93,34 @@ function Seek({ endTime }) {
     }
   };
 
-  console.log(seek.hintLocation, seek.isShownMap);
+  const onClinkHideMap = () => {
+    dispatch(hideMap);
+  };
+
   if (seek.isShownMap) {
-    return <HintMap hint={seek.hintLocation} />;
+    return <HintMap hint={seek.hintLocation} onClinkHideMap={onClinkHideMap} />;
   }
   if (endTime && seek.ready) {
+    // if (
+    //   getDistance(
+    //     seek.myLocation.lat,
+    //     seek.myLocation.lng,
+    //     seek.partnerLocation.lat,
+    //     seek.partnerLocation.lng
+    //   ) < 5
+    // ) {
+    //   finish('success', '여기있었네..? 찾았다!');
+    //   return '';
+    // }
+
     return (
       <div className="seek-container">
-        <Timer endTime={endTime} activateHints={activateHints} type="seek" />
+        <Timer
+          endTime={endTime}
+          activateHints={activateHints}
+          finish={finish}
+          type="seek"
+        />
         <PhotoDiv photo={seek.photo} />
         <HintButtons
           firstHint={seek.firstHint}
@@ -95,6 +128,15 @@ function Seek({ endTime }) {
           onClick={onClick}
         />
         <ReceiveMessage message={seek.message} />
+        <div className="give-up-button-div">
+          <button
+            onClick={() => {
+              finish('giveup', '못찾겠다 꾀꼬리 ㅠㅠ');
+            }}
+          >
+            못찾겠다 꾀꼬리
+          </button>
+        </div>
       </div>
     );
   }

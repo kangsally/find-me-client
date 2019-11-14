@@ -44,7 +44,7 @@ function Login({ history }) {
         history.push('/');
       }
     } catch (error) {
-      if(error.response){
+      if (error.response) {
         const { response } = error;
         if (response.data.error === 'Incorrect id') {
           setIdError('존재하지 않는 아이디입니다.');
@@ -52,14 +52,14 @@ function Login({ history }) {
         if (response.data.error === 'Incorrect password') {
           setPwError('비밀번호가 일치하지 않습니다.');
         }
-      }else{
+      } else {
         console.log(error);
       }
     }
   };
 
   return (
-    <LoginForm 
+    <LoginForm
       onChange={onChange}
       onSubmit={onSubmit}
       idError={idError}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Icon } from 'antd';
 import './SendMessage.scss';
 
 const SendMessage = ({ message, onChange, onSubmit }) => {
@@ -16,9 +15,7 @@ const SendMessage = ({ message, onChange, onSubmit }) => {
               maxLength="20"
               required
             />
-              <button type="submit">
-                <Icon className="button" type="mail" />
-              </button>
+            <button type="submit">보내기</button>
           </form>
         </div>
       </div>

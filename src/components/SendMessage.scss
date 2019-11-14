@@ -2,25 +2,21 @@
 
 .message-container {
   width: 100vw;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 10vh;
 }
 
 .message-box {
-  width: 85vw;
-  height: 12vh;
-  margin: 2.5vh auto;
-  display: inline-block;
-  border: $border;
+  width: 100vw;
+  height: 10vh;
+  margin: 0 auto;
   background-color: #a98d75;
   display: flex;
   justify-content: center;
   align-items: center;
   input {
-    width: 60vw;
-    height: 8vh;
+    width: 70vw;
+    height: 6vh;
+    margin: 1vh auto;
     padding-left: 2vw;
     border: $border;
     background-color: white;
@@ -39,20 +35,11 @@
     align-items: center;
   }
   button {
-    height: 8vh;
-    margin-left: 1vw;
-    border: none;
+    width: 14vw;
+    height: 6vh;
+    margin-left: 4vw;
+    border: $border;
+    font-size: 3vw;
+    font-family: $nanum;
   }
-}
-
-// .submit-button-div {
-//   height: 12vh;
-//   display: inline-block;
-//   position: relative;
-//   margin: 0vh;
-//   line-height: 12vh;
-// }
-
-.button {
-  font-size: 7vh;
 }

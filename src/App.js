@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Home from './container/Home';
 import Join from './container/Join';
 import Login from './container/Login';
 import withAuth from './components/withAuth';
-import SendMessage from './components/SendMessage';
 import InitialLoading from './components/InitialLoading';
-import { logOut, loadingApp } from './actions';
+import { logOut } from './actions';
 import Game from './container/Game';
 import './App.scss';
 
@@ -18,7 +17,6 @@ function App() {
   const onClick = () => {
     dispatch(logOut);
   };
-
   return (
     <div className="App">
       {!initialLoading ? (
@@ -32,7 +30,6 @@ function App() {
         </Switch>
       )}
     </div>
-    // <SendMessage/>
   );
 }
 

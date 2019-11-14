@@ -27,7 +27,7 @@ function withAuth(ComponentToProtect) {
     }
     return (
       <>
-        <ComponentToProtect history={history}/>
+        <ComponentToProtect history={history} />
       </>
     );
   };

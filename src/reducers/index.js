@@ -19,7 +19,9 @@ import {
   SHOW_PHOTO,
   HIDE_PHOTO,
   SHOW_MAP,
-  HIDE_MAP
+  HIDE_MAP,
+  FINISH_GAME,
+  BACK_TO_HOME
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -44,7 +46,9 @@ const initialState = {
     isStarted: false,
     role: '',
     socket: null,
-    endTime: null
+    endTime: null,
+    result: null,
+    finishMessage: null
   },
   hide: {
     ready: false,
@@ -62,6 +66,7 @@ const initialState = {
     partnerLocation: null,
     myLocation: null,
     hintLocation: null,
+    geoLocationId: null,
     message: '',
     firstHint: false,
     secondHint: false,
@@ -126,7 +131,8 @@ function reducer(state = initialState, action) {
           isStarted: true,
           role: action.role,
           socket: action.socket,
-          endTime: null
+          endTime: null,
+          endMessage: null
         }
       });
 
@@ -153,7 +159,8 @@ function reducer(state = initialState, action) {
           ready: true,
           photo: action.photo,
           partnerLocation: action.location,
-          hintLocation: action.hint
+          hintLocation: action.hint,
+          geoLocationId: action.geoLocationId
         })
       });
 
@@ -240,6 +247,21 @@ function reducer(state = initialState, action) {
         seek: Object.assign({}, state.seek, {
           isShownMap: false
         })
+      });
+
+    case FINISH_GAME:
+      return Object.assign({}, state, {
+        game: Object.assign({}, state.game, {
+          result: action.result,
+          finishMessage: action.finishMessage
+        })
+      });
+
+    case BACK_TO_HOME:
+      return Object.assign({}, state, {
+        game: Object.assign({}, initialState.game),
+        hide: Object.assign({}, initialState.hide),
+        seek: Object.assign({}, initialState.seek)
       });
 
     default:

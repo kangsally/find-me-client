@@ -1,7 +1,7 @@
 $nanum: 'Nanum Pen Script', serif;
 $border: 2px solid black;
 
-.container{
+.container {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -81,7 +81,8 @@ $border: 2px solid black;
 
 .link-div {
   width: 60vw;
-  height: 2vh;
+  height: 3vh;
   margin: 0vh auto;
+  font-size: 3vh;
   text-align: right;
 }

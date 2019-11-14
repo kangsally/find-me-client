@@ -19,3 +19,5 @@ export const SHOW_PHOTO = 'SHOW_PHOTO';
 export const HIDE_PHOTO = 'HIDE_PHOTO';
 export const SHOW_MAP = 'SHOW_MAP';
 export const HIDE_MAP = 'HIDE_MAP';
+export const FINISH_GAME = 'FINISH_GAME';
+export const BACK_TO_HOME = 'BACL_TO_HOME';

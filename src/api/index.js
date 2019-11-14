@@ -1,9 +1,10 @@
 import axios from 'axios';
-// const localhostIP = '192.168.0.35'
-const localhostIP = 'localhost';
+
+const serverApi =
+  process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'find-me-server.cibdsxtmnm.ap-northeast-2.elasticbeanstalk.com ';
 
 export const api = axios.create({
-  baseURL: `http://${localhostIP}:8080`,
+  baseURL: serverApi,
   withCredentials: true
 });
 

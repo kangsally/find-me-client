@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.scss';
 
-function Timer({ endTime, activateHints, type }) {
-  const initialTime = new Date().getTime();
+function Timer({ endTime, activateHints, type, finish }) {
+  let presentTime = new Date().getTime();
 
   const [time, setTime] = useState({
-    minute: parseInt((endTime - initialTime) / 60000),
-    second: parseInt(((endTime - initialTime) % 60000) / 1000)
+    minute: parseInt((endTime - presentTime) / 60000),
+    second: parseInt(((endTime - presentTime) % 60000) / 1000)
   });
 
   useEffect(() => {
     const timeId = setInterval(() => {
-      const presentTime = new Date().getTime();
+      presentTime = new Date().getTime();
       const milliseconds = endTime - presentTime;
       const minute = parseInt(milliseconds / 60000);
       const second = parseInt((milliseconds % 60000) / 1000);
@@ -26,6 +26,10 @@ function Timer({ endTime, activateHints, type }) {
 
     return () => clearInterval(timeId);
   }, []);
+
+  if (endTime - presentTime <= 0 && type === 'seek') {
+    finish('timeover', '시간이 초과되었어요');
+  }
 
   return (
     <div className="header">

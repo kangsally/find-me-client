@@ -17,7 +17,9 @@ function HomeDiv({ logout, startGame, id, point }) {
         </div>
       </div>
       <div className="start-button-div">
-        <button onClick={startGame} text-hover="나를 찾아줘">시작하기</button>
+        <button onClick={startGame} text-hover="나를 찾아줘">
+          시작하기
+        </button>
       </div>
     </div>
   );

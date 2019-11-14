@@ -19,7 +19,9 @@ import {
   SHOW_PHOTO,
   HIDE_PHOTO,
   SHOW_MAP,
-  HIDE_MAP
+  HIDE_MAP,
+  FINISH_GAME,
+  BACK_TO_HOME
 } from '../constants/actionTypes';
 
 export const typeJoinForm = ({ name, value }) => ({
@@ -64,11 +66,12 @@ export const sendPhotoLocation = location => ({
   location
 });
 
-export const receivePhotoLocation = (photo, location, hint) => ({
+export const receivePhotoLocation = (photo, location, hint, geoLocationId) => ({
   type: RECEIVE_PHOTO_LOCATION,
   photo,
   location,
-  hint
+  hint,
+  geoLocationId
 });
 
 export const sendSeekLocation = location => ({
@@ -122,4 +125,14 @@ export const showMap = {
 
 export const hideMap = {
   type: HIDE_MAP
+};
+
+export const finishGame = (result, finishMessage) => ({
+  type: FINISH_GAME,
+  result,
+  finishMessage
+});
+
+export const backToHome = {
+  type: BACK_TO_HOME
 };

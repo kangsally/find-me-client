@@ -39,9 +39,7 @@ function Join({ history }) {
     }
 
     if (!passwordReg.test(password)) {
-      setPwError(
-        '숫자와 영문 포함 6자-10자 입력해주세요.'
-      );
+      setPwError('숫자와 영문 포함 6자-10자 입력해주세요.');
       return;
     }
 

@@ -13,13 +13,14 @@ function Home({ history }) {
   const onClickStartGame = () => {
     history.push('/game');
   };
+
   return (
     <HomeDiv
       logout={onClickLogout}
       startGame={onClickStartGame}
       id={user.id}
       point={user.point}
-    ></HomeDiv>
+    />
   );
 }
 
