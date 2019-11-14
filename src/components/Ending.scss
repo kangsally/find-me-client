@@ -1,11 +1,6 @@
 $nanum: 'Nanum Pen Script', serif;
 $blue-color: #003d61;
 $background-color: #a98d75;
-// border: 0.5vw solid black;
-// display: flex;
-// flex-direction: column;
-// justify-content: center;
-// align-items: center;
 
 .ending-container {
   width: 100vw;
@@ -14,6 +9,7 @@ $background-color: #a98d75;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: $nanum;
 }
 
 .ending-box {

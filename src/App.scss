@@ -2,13 +2,14 @@
   text-align: center;
 }
 
-.seek-container {
-  height: 100vh;
+.seek-flex-container{
+  width: 100vw;
   background-color: #003d61;
 }
 
 .hide-container {
-  @extend .seek-container;
+  height: 100vh;
+  background-color: #003d61;
 }
 
 .give-up-button-div {

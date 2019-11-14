@@ -91,7 +91,7 @@ function Hide({ endTime, finish }) {
 
   if (endTime && hide.ready && hide.partnerLocation) {
     return (
-      <div className="seek-container">
+      <div className="seek-flex-container">
         <Timer endTime={endTime} type="hide" />
         <Map location={hide.partnerLocation} type="hide" />
         <SendMessage
