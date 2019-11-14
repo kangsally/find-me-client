@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const serverApi =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'https://api.find-me.website/';
+  process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : 'https://api.find-me.website';
 
 export const api = axios.create({
   baseURL: serverApi,
