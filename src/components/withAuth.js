@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { postToken } from '../api';
+import Loading from '../components/Loading';
 
 function withAuth(ComponentToProtect) {
   return function({ history }) {
@@ -23,7 +24,7 @@ function withAuth(ComponentToProtect) {
     }, [isLoggedIn]);
 
     if (loading) {
-      return <div>로딩</div>;
+      return <Loading />;
     }
     return (
       <>
