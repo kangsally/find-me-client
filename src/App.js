@@ -8,7 +8,6 @@ import withAuth from './components/withAuth';
 import InitialLoading from './components/InitialLoading';
 import { logOut } from './actions';
 import Game from './container/Game';
-import './App.scss';
 
 function App() {
   const dispatch = useDispatch();

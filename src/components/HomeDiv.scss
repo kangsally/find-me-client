@@ -8,57 +8,61 @@ $nanum: 'Nanum Pen Script', serif;
   font-family: $nanum;
 }
 
-.header {
+.home-header {
   width: 100vw;
-  height: 15vh;
+  height: 20vh;
   display: flex;
   align-items: center;
+  position: relative;
   background-color: $blue-color;
 }
 
 .title-box {
-  width: 50vw;
-  margin-left: 5vw;
-  margin-right: 22vw;
-  // font-size: 5vh;
+  left: 7%;
+  position: absolute;
+  margin-right: 10%;
   p {
     text-align: left;
   }
 }
 
 .user-box {
-  width: 30vw;
+  right: 6%;
+  position: absolute;
 }
 
 .id {
-  margin: 1vh;
-  font-size: 7vh;
+  font-size: 35px;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   color: white;
 }
 
 .point {
-  margin: 0vh;
-  font-size: 3vh;
+  margin: 2px;
+  font-size: 20px;
   color: white;
 }
 
 .logout-button {
-  margin: 1vh;
+  margin: 5px;
   border: $border;
-  font-size: 2.5vh;
+  font-size: 16px;
   background-color: #a36131;
   font-family: $nanum;
 }
 
 .start-button-div {
-  margin: 30vh auto;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   button {
-    width: 40vw;
-    height: 15vh;
+    width: 120px;
+    height: 80px;
+    margin: 150px auto;
     border: $border;
     background-color: #a98d75;
-    font-size: 5vh;
+    font-size: 30px;
     font-family: $nanum;
     &:hover {
       font-size: 0vh;

@@ -16,6 +16,8 @@ import {
   RECEIVE_MESSAGE,
   ACTIVATE_FIRST_HINT_BUTTON,
   ACTIVATE_SECOND_HINT_BUTTON,
+  STOP_FIRST_HINT_BUTTON,
+  SHOW_DISTANCE,
   SHOW_PHOTO,
   HIDE_PHOTO,
   SHOW_MAP,
@@ -104,12 +106,21 @@ export const receiveMessage = message => ({
 });
 
 export const activateFirstHintButton = {
-  type: ACTIVATE_FIRST_HINT_BUTTON
+  type: ACTIVATE_FIRST_HINT_BUTTON,
 };
 
 export const activateSecondHintButton = {
   type: ACTIVATE_SECOND_HINT_BUTTON
 };
+
+export const stopFirstHintButton = {
+  type: STOP_FIRST_HINT_BUTTON
+}
+
+export const showDistance = distance => ({
+  type: SHOW_DISTANCE,
+  distance
+})
 
 export const showPhoto = {
   type: SHOW_PHOTO

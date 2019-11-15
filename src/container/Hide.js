@@ -4,6 +4,7 @@ import Counter from '../components/Counter';
 import Map from '../components/Map';
 import Timer from '../components/Timer';
 import SendMessage from '../components/SendMessage';
+import Loading from '../components/Loading';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   takePhoto,
@@ -14,6 +15,7 @@ import {
   sendMessage,
   finishGame
 } from '../actions';
+import '../App.scss';
 
 function Hide({ endTime, finish }) {
   const hide = useSelector(state => state.hide);
@@ -77,7 +79,7 @@ function Hide({ endTime, finish }) {
 
   if (!hide.ready) {
     return (
-      <div className="seek-container">
+      <div className="hide-container">
         <Counter sendPhotos={sendPhotos} finish={finish} photo={hide.photo} />
         <CameraDiv
           takePhotos={takePhotos}
@@ -91,7 +93,7 @@ function Hide({ endTime, finish }) {
 
   if (endTime && hide.ready && hide.partnerLocation) {
     return (
-      <div className="seek-flex-container">
+      <div className="hide-flex-container">
         <Timer endTime={endTime} type="hide" />
         <Map location={hide.partnerLocation} type="hide" />
         <SendMessage
@@ -103,7 +105,7 @@ function Hide({ endTime, finish }) {
     );
   }
 
-  return <div>로딩중</div>;
+  return <Loading />;
 }
 
 export default Hide;

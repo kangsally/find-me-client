@@ -27,7 +27,7 @@ function InitialLoading() {
   }, []);
   return (
     <div className="initial-container">
-      <div className="title-div">{title}</div>
+      <div>{title}</div>
     </div>
   );
 }

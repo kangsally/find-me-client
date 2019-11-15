@@ -4,7 +4,7 @@ import './HomeDiv.scss';
 function HomeDiv({ logout, startGame, id, point }) {
   return (
     <div className="home-container">
-      <div className="header">
+      <div className="home-header">
         <div className="title-box">
           <p className="id">나를 찾아줘</p>
         </div>

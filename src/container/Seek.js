@@ -7,8 +7,7 @@ import {
   receiveMessage,
   activateFirstHintButton,
   activateSecondHintButton,
-  showPhoto,
-  hidePhoto,
+  showDistance,
   showMap,
   hideMap,
   finishGame
@@ -20,6 +19,7 @@ import HintButtons from '../components/HintButtons';
 import HintMap from '../components/HintMap';
 import { postLocation } from '../api';
 import { getGeoLocation, getDistance } from '../utils/getGeoLocation';
+import '../App.scss';
 
 function Seek({ endTime, finish }) {
   const seek = useSelector(state => state.seek);
@@ -63,15 +63,15 @@ function Seek({ endTime, finish }) {
   }, []);
 
   const activateHints = milliseconds => {
-    if (Math.floor(milliseconds / 10000) * 10000 === 60000 * 9) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9) {
       dispatch(activateFirstHintButton);
     }
-    if (Math.floor(milliseconds / 10000) * 10000 === 60000 * 9) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9) {
       dispatch(activateSecondHintButton);
     }
   };
 
-  const onClick = (hint, fisrtHint, secondHint, callback) => {
+  const onClick = (hint, fisrtHint, secondHint) => {
     const { partnerLocation, myLocation } = seek;
     if (hint === 'first' && fisrtHint) {
       let text = '';
@@ -85,7 +85,7 @@ function Seek({ endTime, finish }) {
         partnerLocation.lng
       );
       text += 'M';
-      callback(text);
+      dispatch(showDistance(text));
     }
 
     if (hint === 'second' && secondHint) {
@@ -126,6 +126,7 @@ function Seek({ endTime, finish }) {
           firstHint={seek.firstHint}
           secondHint={seek.secondHint}
           onClick={onClick}
+          distance={seek.distanceHint}
         />
         <ReceiveMessage message={seek.message} />
         <div className="give-up-button-div">

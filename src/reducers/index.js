@@ -16,6 +16,8 @@ import {
   RECEIVE_MESSAGE,
   ACTIVATE_FIRST_HINT_BUTTON,
   ACTIVATE_SECOND_HINT_BUTTON,
+  STOP_FIRST_HINT_BUTTON,
+  SHOW_DISTANCE,
   SHOW_PHOTO,
   HIDE_PHOTO,
   SHOW_MAP,
@@ -71,7 +73,8 @@ const initialState = {
     firstHint: false,
     secondHint: false,
     isShownPhoto: false,
-    isShownMap: false
+    isShownMap: false,
+    distanceHint: null
   }
 };
 
@@ -218,6 +221,14 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         seek: Object.assign({}, state.seek, {
           secondHint: true
+        })
+      });
+
+    case SHOW_DISTANCE:
+      return Object.assign({}, state, {
+        seek: Object.assign({}, state.seek, {
+          distanceHint: action.distance,
+          firstHint: false
         })
       });
 

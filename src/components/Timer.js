@@ -32,7 +32,7 @@ function Timer({ endTime, activateHints, type, finish }) {
   }
 
   return (
-    <div className="header">
+    <div className="timer-header">
       <div className="count-div">
         {time.minute}:{time.second}
       </div>

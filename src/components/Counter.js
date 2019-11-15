@@ -22,7 +22,7 @@ function Counter({ sendPhotos, finish, photo }) {
   }
 
   return (
-    <div className="header">
+    <div className="count-header">
       <div className="count-div">{count}</div>
     </div>
   );

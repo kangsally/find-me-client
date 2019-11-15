@@ -4,18 +4,12 @@ $blue-color: #003d61;
   width: 100vw;
   height: 100vh;
   margin: 0vh auto 0vh;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $blue-color;
-  font-size: 10vh;
+  font-size: 60px;
   color: white;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-}
-
-.title-div {
-  width: 70vw;
-  height: 30vh;
-  position: absolute;
-  top: 40vh;
-  left: 14vw;
   font-family: 'Nanum Pen Script', serif;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
