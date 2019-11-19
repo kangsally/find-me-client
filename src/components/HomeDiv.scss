@@ -64,12 +64,5 @@ $nanum: 'Nanum Pen Script', serif;
     background-color: #a98d75;
     font-size: 30px;
     font-family: $nanum;
-    &:hover {
-      font-size: 0vh;
-    }
-    &:hover:after {
-      content: attr(text-hover);
-      font-size: vh;
-    }
   }
 }

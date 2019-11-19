@@ -8,11 +8,11 @@ import withAuth from './components/withAuth';
 import InitialLoading from './components/InitialLoading';
 import { logOut } from './actions';
 import Game from './container/Game';
+import SeekWaiting from './components/SeekWaiting';
 
 function App() {
   const dispatch = useDispatch();
   const initialLoading = useSelector(state => state.initialLoading);
-
   const onClick = () => {
     dispatch(logOut);
   };

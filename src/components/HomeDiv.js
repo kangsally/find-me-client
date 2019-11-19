@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './HomeDiv.scss';
 
 function HomeDiv({ logout, startGame, id, point }) {
@@ -17,7 +17,7 @@ function HomeDiv({ logout, startGame, id, point }) {
         </div>
       </div>
       <div className="start-button-div">
-        <button onClick={startGame} text-hover="나를 찾아줘">
+        <button onClick={startGame}>
           시작하기
         </button>
       </div>

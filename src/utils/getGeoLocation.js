@@ -20,7 +20,6 @@ export const getGeoLocation = (socket, socketName, dispatch, action) => {
 
   const options = {
     enableHighAccuracy: true,
-    // timeout: 0,
     maximumAge: 0
   };
 
@@ -32,9 +31,6 @@ export const getGeoLocation = (socket, socketName, dispatch, action) => {
     );
   }
 
-  // setTimeout(() => {
-  //   navigator.geolocation.clearWatch(temp);
-  // }, 50000);
   return temp;
 };
 

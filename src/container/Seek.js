@@ -17,6 +17,7 @@ import Timer from '../components/Timer';
 import ReceiveMessage from '../components/ReceiveMessage';
 import HintButtons from '../components/HintButtons';
 import HintMap from '../components/HintMap';
+import SeekWaiting from '../components/SeekWaiting';
 import { postLocation } from '../api';
 import { getGeoLocation, getDistance } from '../utils/getGeoLocation';
 import '../App.scss';
@@ -63,10 +64,10 @@ function Seek({ endTime, finish }) {
   }, []);
 
   const activateHints = milliseconds => {
-    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9.7) {
       dispatch(activateFirstHintButton);
     }
-    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9.5) {
       dispatch(activateSecondHintButton);
     }
   };
@@ -142,7 +143,7 @@ function Seek({ endTime, finish }) {
     );
   }
 
-  return <div>꼭꼭 숨어라!!</div>;
+  return <SeekWaiting />;
 }
 
 export default Seek;

@@ -1,10 +1,71 @@
+$nanum: 'Nanum Pen Script', serif;
+
 .seek-waiting-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #003d61;
+}
+
+.el-base {
+  position: relative;
+  height: 90px;
+  width: 140px;
+  background: #a98d75;
+  border-radius: 3px;
+}
+
+.el-inner-space {
+  border-radius: 3px;
+  border-top: solid 45px transparent;
+  border-right: solid 70px #cdbaac;
+  border-bottom: solid 45px #cdbaac;
+  border-left: solid 70px #cdbaac;
+}
+
+.el-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  border-top: solid 45px #a98d75;
+  border-right: solid 70px transparent;
+  border-left: solid 70px transparent;
+  animation: el-open 4s infinite;
+}
+
+.text-wait-div {
+  width: 70vw;
+  height: 8vh;
+  text-align: center;
+  margin: 2vh;
+  line-height: 11vh;
+  font-size: 6vw;
+  font-family: $nanum;
+  color: white;
+}
+
+/*Envelope Animation*/
+@keyframes el-open {
+  0% {
+    border-top: solid 45px #a98d75;
+    transform: rotateX(90deg);
+    transform-origin: center top;
   }
-  
+
+  40%,
+  60% {
+    border-top: solid 45px #cdbaac;
+    transform: rotateX(90deg);
+    transform-origin: center top;
+  }
+
+  100% {
+    border-top: solid 45px #a98d75;
+    transform: rotateX(180deg);
+    transform-origin: center top;
+  }
+}

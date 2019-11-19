@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './LoginForm.scss';
 
 const LoginForm = ({ onSubmit, onChange, login, idError, pwError }) => {
@@ -17,7 +17,7 @@ const LoginForm = ({ onSubmit, onChange, login, idError, pwError }) => {
               name="id"
               value={login.id || ''}
               onChange={onChange}
-              maxLength="5"
+              maxLength="8"
               required
             />
             <div className="error-div">{idError}</div>

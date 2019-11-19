@@ -21,8 +21,6 @@ function CameraDiv({ takePhotos, photo, sendPhotos }) {
           onTakePhoto={photoData => {
             onTakePhotos(photoData);
           }}
-          // isFullscreen={false}
-          // idealResolution={{ width: 640, height: 480 }}
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './JoinForm.scss';
 
 const JoinForm = ({ onSubmit, onChange, join, idError, pwError }) => {

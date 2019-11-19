@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './HintButtons.scss';
 
 const HintButtons = ({ firstHint, secondHint, onClick, distance }) => {

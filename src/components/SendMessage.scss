@@ -4,11 +4,13 @@ $nanum: 'Nanum Pen Script', serif;
 .message-container {
   width: 100vw;
   height: 10%;
+  bottom: 0;
+  position: absolute;
 }
 
 .message-box {
   width: 100vw;
-  height: 10vh;
+  height: 100%;
   margin: 0 auto;
   background-color: #a98d75;
   display: flex;
@@ -40,6 +42,7 @@ $nanum: 'Nanum Pen Script', serif;
     height: 6vh;
     margin-left: 4vw;
     border: $border;
+    background-color: #cdbaac;
     font-size: 3vw;
     font-family: $nanum;
   }
