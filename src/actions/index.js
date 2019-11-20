@@ -11,8 +11,6 @@ import {
   SEND_SEEK_LOCATION,
   RECEIVE_SEEK_LOCATION,
   RECEIVE_END_TIME,
-  TYPE_MESSAGE,
-  SEND_MESSAGE,
   RECEIVE_MESSAGE,
   ACTIVATE_FIRST_HINT_BUTTON,
   ACTIVATE_SECOND_HINT_BUTTON,
@@ -90,15 +88,6 @@ export const receiveEndTime = time => ({
   type: RECEIVE_END_TIME,
   time
 });
-
-export const typeMessage = message => ({
-  type: TYPE_MESSAGE,
-  message
-});
-
-export const sendMessage = {
-  type: SEND_MESSAGE
-};
 
 export const receiveMessage = message => ({
   type: RECEIVE_MESSAGE,

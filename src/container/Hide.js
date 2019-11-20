@@ -66,15 +66,13 @@ function Hide({ endTime, finish }) {
     );
   };
 
-  const onChange = event => {
-    const { value } = event.target;
-    dispatch(typeMessage(value));
-  };
+  // const onChange = event => {
+  //   const { value } = event.target;
+  //   dispatch(typeMessage(value));
+  // };
 
-  const onSubmit = async event => {
-    event.preventDefault();
-    socket.emit('message', { message: hide.message });
-    dispatch(sendMessage);
+  const emitMessage = async message => {
+    await socket.emit('message', { message: message });
   };
 
   if (!hide.ready) {
@@ -97,9 +95,9 @@ function Hide({ endTime, finish }) {
         <Timer endTime={endTime} type="hide" />
         <Map location={hide.partnerLocation} type="hide" />
         <SendMessage
-          message={hide.message}
-          onChange={onChange}
-          onSubmit={onSubmit}
+          // message={hide.message}
+          // onChange={onChange}
+          emitMessage={emitMessage}
         />
       </div>
     );

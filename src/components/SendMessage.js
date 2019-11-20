@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SendMessage.scss';
 
-const SendMessage = ({ message, onChange, onSubmit }) => {
+const SendMessage = ({ emitMessage }) => {
+  const [message, setMessage] = useState('');
+
+  const onChange = event => {
+    const { value } = event.target;
+    setMessage(value);
+  };
+
+  const onSubmit = async event => {
+    event.preventDefault();
+    emitMessage(message);
+    setMessage('');
+  };
+
   return (
     <div className="message-container">
       <div className="message-box">

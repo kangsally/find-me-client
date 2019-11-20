@@ -11,12 +11,9 @@ import {
   SEND_SEEK_LOCATION,
   RECEIVE_SEEK_LOCATION,
   RECEIVE_END_TIME,
-  TYPE_MESSAGE,
-  SEND_MESSAGE,
   RECEIVE_MESSAGE,
   ACTIVATE_FIRST_HINT_BUTTON,
   ACTIVATE_SECOND_HINT_BUTTON,
-  STOP_FIRST_HINT_BUTTON,
   SHOW_DISTANCE,
   SHOW_PHOTO,
   HIDE_PHOTO,
@@ -185,21 +182,6 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         game: Object.assign({}, state.game, {
           endTime: action.time
-        })
-      });
-
-    case TYPE_MESSAGE:
-      return Object.assign({}, state, {
-        hide: Object.assign({}, state.hide, {
-          message: action.message
-        })
-      });
-
-    case SEND_MESSAGE:
-      return Object.assign({}, state, {
-        hide: Object.assign({}, state.hide, {
-          message: '',
-          messageCount: (state.hide.messageCount += 1)
         })
       });
 
