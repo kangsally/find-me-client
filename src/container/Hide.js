@@ -16,6 +16,7 @@ import {
   finishGame
 } from '../actions';
 import '../App.scss';
+import _ from 'lodash';
 
 function Hide({ endTime, finish }) {
   const hide = useSelector(state => state.hide);
@@ -37,7 +38,7 @@ function Hide({ endTime, finish }) {
       dispatch(finishGame(result, finishMessage));
       socket.emit('end', { data: 'finish' });
     });
-  });
+  }, []);
 
   const takePhotos = photoData => {
     dispatch(takePhoto(photoData));
@@ -66,11 +67,6 @@ function Hide({ endTime, finish }) {
     );
   };
 
-  // const onChange = event => {
-  //   const { value } = event.target;
-  //   dispatch(typeMessage(value));
-  // };
-
   const emitMessage = async message => {
     await socket.emit('message', { message: message });
   };
@@ -95,8 +91,6 @@ function Hide({ endTime, finish }) {
         <Timer endTime={endTime} type="hide" />
         <Map location={hide.partnerLocation} type="hide" />
         <SendMessage
-          // message={hide.message}
-          // onChange={onChange}
           emitMessage={emitMessage}
         />
       </div>

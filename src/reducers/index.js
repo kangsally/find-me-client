@@ -108,18 +108,14 @@ function reducer(state = initialState, action) {
 
     case LOG_OUT:
       return Object.assign({}, state, {
-        isLoggedIn: {
-          check: false
-        },
-        user: {
-          id: '',
-          point: 0
-        },
-        login: {
-          id: '',
-          password: ''
-        }
+        join: Object.assign({}, initialState.join),
+        login: Object.assign({}, initialState.login),
+        isLoggedIn: Object.assign({}, initialState.isLoggedIn),
+        user: Object.assign({}, initialState.user),
+        hide: Object.assign({}, initialState.hide),
+        seek: Object.assign({}, initialState.seek)
       });
+
     case LOADING_APP:
       return Object.assign({}, state, {
         initialLoading: true
