@@ -11,12 +11,20 @@ import {
   sendPhotoLocation,
   receiveSeekLocation,
   receiveEndTime,
-  typeMessage,
-  sendMessage,
   finishGame
 } from '../actions';
+import {
+  HIDE_DATA,
+  SEEK_DATA,
+  NOTICE,
+  MESSAGE,
+  HIDE_FINISH,
+  END,
+  DISCONNECT,
+  DISCONNECTED,
+  SEEK_FINISH
+} from '../constants/events';
 import '../App.scss';
-import _ from 'lodash';
 
 function Hide({ endTime, finish }) {
   const hide = useSelector(state => state.hide);
@@ -24,19 +32,22 @@ function Hide({ endTime, finish }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.on('seekData', data => {
+    socket.on(SEEK_DATA, data => {
       dispatch(receiveSeekLocation(data.location));
     });
-    socket.on('notice', data => {
+    socket.on(NOTICE, data => {
       dispatch(receiveEndTime(data.time));
     });
-    socket.on('seekFinish', ({ result, finishMessage }) => {
+    socket.on(SEEK_FINISH, ({ result, finishMessage }) => {
       dispatch(finishGame(result, finishMessage));
-      socket.emit('end', { data: 'finish' });
+      socket.emit(END, { data: 'finish' });
     });
-    socket.on('disconnected', ({ result, finishMessage }) => {
+    socket.on(DISCONNECTED, ({ result, finishMessage }) => {
       dispatch(finishGame(result, finishMessage));
-      socket.emit('end', { data: 'finish' });
+      socket.emit(END, { data: 'finish' });
+    });
+    socket.on(DISCONNECT, () => {
+      dispatch(finishGame('에러', '서버와의 연결이 끊겼어요.'));
     });
   }, []);
 
@@ -47,7 +58,7 @@ function Hide({ endTime, finish }) {
   const sendPhotos = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
-        socket.emit('hideData', {
+        socket.emit(HIDE_DATA, {
           photo: hide.photo,
           location: {
             lat: position.coords.latitude,
@@ -62,13 +73,13 @@ function Hide({ endTime, finish }) {
         );
       },
       error => {
-        console.log(error);
+        dispatch(finishGame('에러', '위치를 전송하지 못했어요.'));
       }
     );
   };
 
   const emitMessage = async message => {
-    await socket.emit('message', { message: message });
+    await socket.emit(MESSAGE, { message: message });
   };
 
   if (!hide.ready) {
@@ -87,12 +98,10 @@ function Hide({ endTime, finish }) {
 
   if (endTime && hide.ready && hide.partnerLocation) {
     return (
-      <div className="hide-flex-container">
+      <div className="hide-container">
         <Timer endTime={endTime} type="hide" />
         <Map location={hide.partnerLocation} type="hide" />
-        <SendMessage
-          emitMessage={emitMessage}
-        />
+        <SendMessage emitMessage={emitMessage} />
       </div>
     );
   }

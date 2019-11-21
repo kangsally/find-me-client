@@ -1,38 +1,30 @@
+@import './common.scss';
+
 .App {
   height: 100%;
   text-align: center;
 }
 
 .seek-container {
-  width: 100vw;
-  height: 100vh;
-  background-color: #003d61;
+  @include container;
+  background-color: $navy-color;
 }
 
 .hide-container {
-  width: 100vw;
-  height: 100vh;
+  @extend .seek-container;
   position: relative;
-  background-color: #003d61;
-}
-
-.hide-flex-container {
-  height: 100vh;
-  background-color: #003d61;
 }
 
 .give-up-button-div {
   width: 100vw;
   height: 7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include align-center;
   button {
     width: 34vw;
     height: 5vh;
-    border: 2px solid black;
+    border: $border;
     background-color: #787876;
-    font-size: 3vw;
-    font-family: 'Nanum Pen Script', serif;
+    font-size: 13px;
+    font-family: $nanum;
   }
 }

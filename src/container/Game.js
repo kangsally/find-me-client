@@ -8,6 +8,13 @@ import Seek from './Seek';
 import { SOCKET_API } from '../api/sockets';
 import { getGeoLocation } from '../utils/getGeoLocation';
 import { startGame, finishGame, backToHome } from '../actions';
+import {
+  USER_INFO,
+  START,
+  HIDE_FINISH,
+  SEEK_FINISH,
+  USER_LOCATION
+} from '../constants/events';
 const _ = require('lodash');
 
 function Game({ history }) {
@@ -18,11 +25,11 @@ function Game({ history }) {
   useEffect(() => {
     const socket = io(SOCKET_API);
     const connectToSocket = async () => {
-      socket.emit('userInfo', { id: user.id });
+      socket.emit(USER_INFO, { id: user.id });
 
-      const tempLocation = await getGeoLocation(socket, 'userLocation');
+      const tempLocation = await getGeoLocation(socket, USER_LOCATION);
 
-      socket.on('start', data => {
+      socket.on(START, data => {
         const role = _.findKey(data, value => {
           return value === user.id;
         });
@@ -35,7 +42,7 @@ function Game({ history }) {
   }, []);
 
   const hideFinish = (result, finishMessage) => {
-    game.socket.emit('hideFinish', {
+    game.socket.emit(HIDE_FINISH, {
       result: result,
       finishMessage: finishMessage
     });
@@ -43,7 +50,7 @@ function Game({ history }) {
   };
 
   const seekFinish = (result, finishMessage) => {
-    game.socket.emit('seekFinish', {
+    game.socket.emit(SEEK_FINISH, {
       result: result,
       finishMessage: finishMessage
     });

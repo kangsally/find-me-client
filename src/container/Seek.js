@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PhotoDiv from '../components/PhotoDiv';
+import Timer from '../components/Timer';
+import ReceiveMessage from '../components/ReceiveMessage';
+import HintButtons from '../components/HintButtons';
+import HintMap from '../components/HintMap';
+import SeekWaiting from '../components/SeekWaiting';
 import {
   receivePhotoLocation,
   sendSeekLocation,
@@ -12,14 +18,18 @@ import {
   hideMap,
   finishGame
 } from '../actions';
-import PhotoDiv from '../components/PhotoDiv';
-import Timer from '../components/Timer';
-import ReceiveMessage from '../components/ReceiveMessage';
-import HintButtons from '../components/HintButtons';
-import HintMap from '../components/HintMap';
-import SeekWaiting from '../components/SeekWaiting';
 import { postLocation } from '../api';
 import { getGeoLocation, getDistance } from '../utils/getGeoLocation';
+import {
+  HIDE_DATA,
+  SEEK_DATA,
+  NOTICE,
+  MESSAGE,
+  HIDE_FINISH,
+  END,
+  DISCONNECT,
+  DISCONNECTED
+} from '../constants/events';
 import '../App.scss';
 
 function Seek({ endTime, finish }) {
@@ -28,11 +38,11 @@ function Seek({ endTime, finish }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.on('hideData', async data => {
+    socket.on(HIDE_DATA, async data => {
       const facilityLocation = await postLocation(data.location);
       const geoLocationId = await getGeoLocation(
         socket,
-        'seekData',
+        SEEK_DATA,
         dispatch,
         sendSeekLocation
       );
@@ -45,22 +55,26 @@ function Seek({ endTime, finish }) {
           geoLocationId
         )
       );
-      socket.emit('notice', { recieve: 'ok' });
-      socket.on('notice', data => {
+      socket.emit(NOTICE, { recieve: 'ok' });
+      socket.on(NOTICE, data => {
         dispatch(receiveEndTime(data.time));
       });
-      socket.on('message', data => {
+      socket.on(MESSAGE, data => {
         dispatch(receiveMessage(data.message));
       });
     });
-    socket.on('hideFinish', ({ result, finishMessage }) => {
+    socket.on(HIDE_FINISH, ({ result, finishMessage }) => {
       dispatch(finishGame(result, finishMessage));
-      socket.emit('end', { data: 'finish' });
+      socket.emit(END, { data: 'finish' });
     });
-    socket.on('disconnected', ({ result, finishMessage }) => {
+    socket.on(DISCONNECTED, ({ result, finishMessage }) => {
       dispatch(finishGame(result, finishMessage));
-      socket.emit('end', { data: 'finish' });
+      socket.emit(END, { data: 'finish' });
     });
+    socket.on(DISCONNECT, () => {
+      dispatch(finishGame('에러', '서버와의 연결이 끊겼어요.'));
+    })
+
   }, []);
 
   const activateHints = milliseconds => {

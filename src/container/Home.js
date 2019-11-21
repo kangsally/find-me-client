@@ -1,6 +1,6 @@
 import React from 'react';
-import HomeDiv from '../components/HomeDiv';
 import { useSelector, useDispatch } from 'react-redux';
+import HomeDiv from '../components/HomeDiv';
 import { logOut } from '../actions';
 
 function Home({ history }) {

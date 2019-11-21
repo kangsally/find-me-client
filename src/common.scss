@@ -1,0 +1,17 @@
+$nanum: 'Nanum Pen Script', serif;
+$border: 2px solid black;
+$navy-color: #003d61;
+$button-color: #cdbaac;
+$box-color: #a98d75;
+$input-color: white;
+
+@mixin container {
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

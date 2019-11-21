@@ -1,23 +1,19 @@
-// $border: 2px solid black;
-$nanum: 'Nanum Pen Script', serif;
-$blue-color: #003d61;
+@import '../common.scss';
 
 .hint-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  @include container;
+  @include align-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh;
+  font-size: 15px;
+  font-family: $nanum;
 
   button {
     width: 40vw;
     height: 20vh;
     margin: 3vh auto;
-    border: 0.5vw solid black;
-    background-color: #a98d75;
-    font-size: 5vh;
+    border: $border;
+    background-color: $box-color;
+    font-size: 35px;
     font-family: $nanum;
   }
 }
@@ -27,7 +23,7 @@ $blue-color: #003d61;
   height: 15vh;
   display: flex;
   flex-direction: column;
-  background-color: $blue-color;
+  background-color: $navy-color;
 }
 
 .hide-map-button-div {
@@ -42,7 +38,7 @@ $blue-color: #003d61;
     margin: 0;
     top: 0;
     right: 0;
-    font-size: 3vw;
+    font-size: 13px;
   }
 }
 
@@ -50,9 +46,10 @@ $blue-color: #003d61;
   width: 80vw;
   height: 8vh;
   margin: 0 auto;
-  background-color: #a98d75;
-  border: 2px solid black;
+  background-color: $box-color;
+  border: $border;
   text-align: center;
   line-height: 8vh;
-  font-size: 15px;
+  font-size: 17px;
+  font-family: $nanum;
 }

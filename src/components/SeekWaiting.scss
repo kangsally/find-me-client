@@ -1,29 +1,26 @@
-$nanum: 'Nanum Pen Script', serif;
+@import '../common.scss';
 
 .seek-waiting-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  @include container;
+  @include align-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #003d61;
+  background-color: $navy-color;
 }
 
 .el-base {
   position: relative;
   height: 90px;
   width: 140px;
-  background: #a98d75;
+  background: $box-color;
   border-radius: 3px;
 }
 
 .el-inner-space {
   border-radius: 3px;
   border-top: solid 45px transparent;
-  border-right: solid 70px #cdbaac;
-  border-bottom: solid 45px #cdbaac;
-  border-left: solid 70px #cdbaac;
+  border-right: solid 70px $button-color;
+  border-bottom: solid 45px $button-color;
+  border-left: solid 70px $button-color;
 }
 
 .el-flap {
@@ -31,7 +28,7 @@ $nanum: 'Nanum Pen Script', serif;
   top: 0;
   left: 0;
   border-radius: 3px;
-  border-top: solid 45px #a98d75;
+  border-top: solid 45px $box-color;
   border-right: solid 70px transparent;
   border-left: solid 70px transparent;
   animation: el-open 4s infinite;
@@ -48,23 +45,22 @@ $nanum: 'Nanum Pen Script', serif;
   color: white;
 }
 
-/*Envelope Animation*/
 @keyframes el-open {
   0% {
-    border-top: solid 45px #a98d75;
+    border-top: solid 45px $box-color;
     transform: rotateX(90deg);
     transform-origin: center top;
   }
 
   40%,
   60% {
-    border-top: solid 45px #cdbaac;
+    border-top: solid 45px $button-color;
     transform: rotateX(90deg);
     transform-origin: center top;
   }
 
   100% {
-    border-top: solid 45px #a98d75;
+    border-top: solid 45px $box-color;
     transform: rotateX(180deg);
     transform-origin: center top;
   }

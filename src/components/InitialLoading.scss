@@ -1,15 +1,12 @@
-$blue-color: #003d61;
+@import '../common.scss';
 
 .initial-container {
-  width: 100vw;
-  height: 100vh;
+  @include container;
   margin: 0vh auto 0vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $blue-color;
+  @include align-center;
+  background-color: $navy-color;
   font-size: 60px;
   color: white;
-  font-family: 'Nanum Pen Script', serif;
+  font-family: $nanum;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }

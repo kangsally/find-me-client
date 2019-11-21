@@ -1,10 +1,7 @@
-$blue-color: #003d61;
-$border: 2px solid black;
-$nanum: 'Nanum Pen Script', serif;
+@import '../common.scss';
 
 .home-container {
-  width: 100vw;
-  height: 100vh;
+  @include container;
   font-family: $nanum;
 }
 
@@ -14,7 +11,7 @@ $nanum: 'Nanum Pen Script', serif;
   display: flex;
   align-items: center;
   position: relative;
-  background-color: $blue-color;
+  background-color: $navy-color;
 }
 
 .title-box {
@@ -53,15 +50,13 @@ $nanum: 'Nanum Pen Script', serif;
 
 .start-button-div {
   height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include align-center;
   button {
     width: 120px;
     height: 80px;
     margin: 150px auto;
     border: $border;
-    background-color: #a98d75;
+    background-color: $box-color;
     font-size: 30px;
     font-family: $nanum;
   }

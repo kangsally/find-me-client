@@ -1,26 +1,19 @@
-$nanum: 'Nanum Pen Script', serif;
-$blue-color: #003d61;
-$background-color: #a98d75;
+@import '../common.scss';
 
 .ending-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+  @include container;
+  @include align-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-family: $nanum;
 }
 
 .ending-box {
   width: 80vw;
   height: 50vh;
-  display: flex;
+  @include align-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 0.5vw solid black;
-  background-color: #a98d75;
+  border: $border;
+  background-color: $box-color;
 }
 
 .result-title {
@@ -42,14 +35,12 @@ $background-color: #a98d75;
 .home-button-div {
   width: 70vw;
   height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include align-center;
   button {
     width: 25vw;
     height: 7vh;
-    border: 0.5vw solid black;
-    background-color: #cdbaac;
+    border: $border;
+    background-color: $button-color;
     font-size: 4vh;
     font-family: $nanum;
   }

@@ -6,18 +6,14 @@
   margin: 2.5vh auto;
   display: inline-block;
   border: $border;
-  background-color: #a98d75;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: $box-color;
+  @include align-center;
 }
 
 .receive-message-container {
   width: 100vw;
   height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vh;
-  font-family: 'Nanum Pen Script', serif;;
+  @include align-center;
+  font-size: 30px;
+  font-family: $nanum;
 }

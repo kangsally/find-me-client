@@ -1,47 +1,29 @@
-$border: 2px solid black;
-$nanum: 'Nanum Pen Script', serif;
-
-.message-container {
-  width: 100vw;
-  height: 10%;
-  bottom: 0;
-  position: absolute;
-}
+@import '../common.scss';
 
 .message-box {
   width: 100vw;
-  height: 100%;
+  height: 10vh;
   margin: 0 auto;
-  background-color: #a98d75;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  input {
-    width: 70vw;
-    height: 6vh;
-    margin: 1vh auto;
-    padding-left: 2vw;
-    border: $border;
-    background-color: white;
-    font-size: 3vh;
-    font-family: $nanum;
-  }
-}
-
-.message-form-div {
-  width: 90vw;
+  background-color: $box-color;
+  @include align-center;
   form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  button {
-    width: 14vw;
-    height: 6vh;
-    margin-left: 4vw;
-    border: $border;
-    background-color: #cdbaac;
-    font-size: 3vw;
-    font-family: $nanum;
+    input {
+      width: 70vw;
+      height: 6vh;
+      padding-left: 2vw;
+      border: $border;
+      background-color: white;
+      font-size: 22px;
+      font-family: $nanum;
+    }
+    button {
+      width: 18vw;
+      height: 6vh;
+      margin-left: 4vw;
+      border: $border;
+      background-color: $button-color;
+      font-size: 22px;
+      font-family: $nanum;
+    }
   }
 }

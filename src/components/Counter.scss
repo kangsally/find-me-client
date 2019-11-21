@@ -1,4 +1,4 @@
-@import './HomeDiv.scss';
+@import '../common.scss';
 
 .count-div {
   width: 30vw;
@@ -7,13 +7,12 @@
   line-height: 10vh;
   font-size: 10vh;
   color: white;
-  font-family: 'Nanum Pen Script', serif;
+  font-family: $nanum;
 }
 
 .count-header {
   width: 100vw;
   height: 20vh;
-  display: flex;
-  align-items: center;
-  background-color: #003d61;
+  @include align-center;
+  background-color: $navy-color;
 }

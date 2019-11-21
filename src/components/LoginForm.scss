@@ -1,19 +1,17 @@
-$nanum: 'Nanum Pen Script', serif;
-$border: 2px solid black;
+@import '../common.scss';
 
 .container {
-  height: 100%;
-  display: flex;
-  align-items: center;
+  @include container;
+  @include align-center;
   font-family: $nanum;
 }
 
 .login-box {
-  margin: 0vh auto 0;
+  margin: 0 auto 0;
   padding-top: 35px;
   padding-bottom: 15px;
   border: $border;
-  background-color: #a98d75;
+  background-color: $box-color;
 }
 
 .id-div {
@@ -25,7 +23,7 @@ $border: 2px solid black;
     height: 35px;
     padding-left: 7px;
     border: $border;
-    background-color: white;
+    background-color: $input-color;
     font-size: 20px;
     font-family: $nanum;
   }
@@ -46,16 +44,14 @@ $border: 2px solid black;
 .button-div {
   width: 260px;
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include align-center;
 
   button {
     width: 100px;
     height: 50px;
     margin: 2px;
     border: $border;
-    background-color: #cdbaac;
+    background-color: $button-color;
     font-family: $nanum;
     font-size: 20px;
     &:hover {

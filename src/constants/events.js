@@ -1,0 +1,13 @@
+export const CONNECTION = 'connection';
+export const USER_INFO = 'userInfo';
+export const USER_LOCATION = 'userLocation';
+export const HIDE_DATA = 'hideData';
+export const SEEK_DATA = 'seekData';
+export const NOTICE = 'notice';
+export const MESSAGE = 'message';
+export const SEEK_FINISH = 'seekFinish';
+export const HIDE_FINISH = 'hideFinish';
+export const START = 'start';
+export const END = 'end';
+export const DISCONNECT = 'disconnect';
+export const DISCONNECTED = 'disconnected';

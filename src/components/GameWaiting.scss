@@ -1,12 +1,10 @@
-$nanum: 'Nanum Pen Script', serif;
+@import '../common.scss';
 
 .game-container {
   width: 100vw;
   height: 100vh;
-  display: flex;
+  @include align-center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: white;
 }
 
@@ -28,13 +26,13 @@ $nanum: 'Nanum Pen Script', serif;
 .pulsing-rings .pulsing-ringlet {
   width: 100px;
   height: 100px;
-  background: #fff;
+  background: white;
   border: 3px solid #6EAAFF;
   border-radius: 50%;
   position: absolute;
   transform: scale(0.1,0.1);
   opacity: 0;
-  animation: pulseRing 3000ms ease-out infinite;
+  animation: pulsering 3000ms ease-out infinite;
 }
 
 .pulsing-rings .pulsing-ringlet:nth-of-type(2) {
@@ -44,7 +42,7 @@ $nanum: 'Nanum Pen Script', serif;
   animation-delay: 1200ms;
 }
 
-@keyframes pulseRing {
+@keyframes pulsering {
   0% {
       transform: scale(0.1,0.1);
       opacity: 0
