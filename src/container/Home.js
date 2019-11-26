@@ -19,7 +19,6 @@ function Home({ history }) {
       logout={onClickLogout}
       startGame={onClickStartGame}
       id={user.id}
-      point={user.point}
     />
   );
 }

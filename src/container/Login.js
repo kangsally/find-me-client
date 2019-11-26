@@ -38,7 +38,6 @@ function Login({ history }) {
         id: id,
         password: password
       });
-      console.log(response);
       if (response.status === 200) {
         dispatch(logIn(response.data.id, response.data.point));
         history.push('/');

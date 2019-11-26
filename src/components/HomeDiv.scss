@@ -28,23 +28,23 @@
   position: absolute;
 }
 
-.id {
+.title {
   font-size: 35px;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
   color: white;
 }
 
-.point {
+.id {
   margin: 2px;
-  font-size: 20px;
+  font-size: 30px;
   color: white;
 }
 
 .logout-button {
   margin: 5px;
   border: $border;
-  font-size: 16px;
-  background-color: #a36131;
+  font-size: 22px;
+  background-color: $button-color;
   font-family: $nanum;
 }
 

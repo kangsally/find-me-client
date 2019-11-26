@@ -73,15 +73,14 @@ function Seek({ endTime, finish }) {
     });
     socket.on(DISCONNECT, () => {
       dispatch(finishGame('에러', '서버와의 연결이 끊겼어요.'));
-    })
-
+    });
   }, []);
 
   const activateHints = milliseconds => {
-    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9.7) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 8) {
       dispatch(activateFirstHintButton);
     }
-    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 9.5) {
+    if (Math.floor(milliseconds / 1000) * 1000 === 60000 * 6) {
       dispatch(activateSecondHintButton);
     }
   };
@@ -122,12 +121,11 @@ function Seek({ endTime, finish }) {
     //     seek.myLocation.lng,
     //     seek.partnerLocation.lat,
     //     seek.partnerLocation.lng
-    //   ) < 5
+    //   ) < 50
     // ) {
     //   finish('success', '여기있었네..? 찾았다!');
     //   return '';
     // }
-
     return (
       <div className="seek-container">
         <Timer

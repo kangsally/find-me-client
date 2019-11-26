@@ -35,12 +35,12 @@
 }
 
 .text-wait-div {
-  width: 70vw;
+  width: 100vw;
   height: 8vh;
   text-align: center;
   margin: 2vh;
-  line-height: 11vh;
-  font-size: 6vw;
+  line-height: 30px;
+  font-size: 30px;
   font-family: $nanum;
   color: white;
 }
@@ -52,7 +52,6 @@
     transform-origin: center top;
   }
 
-  40%,
   60% {
     border-top: solid 45px $button-color;
     transform: rotateX(90deg);

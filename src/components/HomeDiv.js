@@ -1,16 +1,15 @@
 import React from 'react';
 import './HomeDiv.scss';
 
-function HomeDiv({ logout, startGame, id, point }) {
+function HomeDiv({ logout, startGame, id }) {
   return (
     <div className="home-container">
       <div className="home-header">
         <div className="title-box">
-          <p className="id">나를 찾아줘</p>
+          <p className="title">나를 찾아줘</p>
         </div>
         <div className="user-box">
-          <p className="point">{id}</p>
-          <p className="point">{point} p</p>
+          <p className="id">{id}</p>
           <button className="logout-button" onClick={logout}>
             로그아웃
           </button>

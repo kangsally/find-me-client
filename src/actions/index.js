@@ -36,10 +36,9 @@ export const typeLoginForm = ({ name, value }) => ({
   value
 });
 
-export const logIn = (id, point) => ({
+export const logIn = id => ({
   type: LOG_IN,
   id,
-  point
 });
 
 export const logOut = {

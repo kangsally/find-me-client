@@ -38,8 +38,7 @@ const initialState = {
     check: false
   },
   user: {
-    id: '',
-    point: 0
+    id: ''
   },
   game: {
     isStarted: false,
@@ -97,8 +96,7 @@ function reducer(state = initialState, action) {
           check: true
         },
         user: {
-          id: action.id,
-          point: action.point
+          id: action.id
         },
         login: {
           id: '',
@@ -107,14 +105,7 @@ function reducer(state = initialState, action) {
       });
 
     case LOG_OUT:
-      return Object.assign({}, state, {
-        join: Object.assign({}, initialState.join),
-        login: Object.assign({}, initialState.login),
-        isLoggedIn: Object.assign({}, initialState.isLoggedIn),
-        user: Object.assign({}, initialState.user),
-        hide: Object.assign({}, initialState.hide),
-        seek: Object.assign({}, initialState.seek)
-      });
+      return Object.assign({}, initialState);
 
     case LOADING_APP:
       return Object.assign({}, state, {
