@@ -28,15 +28,16 @@
 
    -술래 첫번째 힌트
 
-   <img src="./find-me-gif/hint1.gif" width="400px" />  
+   <img src="./find-me-gif/hint1.gif" width="400px" />
 
-​    -술래 두번째 힌트
+   -술래 두번째 힌트
 
-   <img src="./find-me-gif/hint2.gif" width="400px" />   
+   <img src="./find-me-gif/hint2.gif" width="400px" />
 
    -술래 게임 포기
 
-   <img src="./find-me-gif/ending.gif" width="400px" />   
+   <img src="./find-me-gif/enging.gif" width="400px" />
+   
 
 
 
