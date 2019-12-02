@@ -36,8 +36,8 @@
 
    -술래 게임 포기
 
-   <img src="./find-me-gif/enging.gif" width="400px" />
-   
+   <img src="./find-me-gif/ending.gif" width="400px" />
+
 
 
 
