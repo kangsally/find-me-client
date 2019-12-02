@@ -58,6 +58,7 @@ function Game({ history }) {
   };
 
   const onClick = () => {
+    game.socket.disconnect();
     dispatch(backToHome);
     history.push('/');
   };

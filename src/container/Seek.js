@@ -115,17 +115,18 @@ function Seek({ endTime, finish }) {
     return <HintMap hint={seek.hintLocation} onClinkHideMap={onClinkHideMap} />;
   }
   if (endTime && seek.ready) {
-    // if (
-    //   getDistance(
-    //     seek.myLocation.lat,
-    //     seek.myLocation.lng,
-    //     seek.partnerLocation.lat,
-    //     seek.partnerLocation.lng
-    //   ) < 50
-    // ) {
-    //   finish('success', '여기있었네..? 찾았다!');
-    //   return '';
-    // }
+    if (
+      getDistance(
+        seek.myLocation.lat,
+        seek.myLocation.lng,
+        seek.partnerLocation.lat,
+        seek.partnerLocation.lng
+      ) < 50
+    ) {
+      finish('success', '여기있었네..? 찾았다!');
+      return '';
+    }
+
     return (
       <div className="seek-container">
         <Timer

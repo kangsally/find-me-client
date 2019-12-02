@@ -17,7 +17,7 @@ function Timer({ endTime, activateHints, type, finish }) {
       const second = parseInt((milliseconds % 60000) / 1000);
       setTime({
         minute: minute <= 10 ? '0' + minute : minute,
-        second: second <= 10 ? '0' + second : second
+        second: second < 10 ? '0' + second : second
       });
       if (type === 'seek') {
         activateHints(milliseconds);

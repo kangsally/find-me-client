@@ -238,6 +238,9 @@ function reducer(state = initialState, action) {
       });
 
     case BACK_TO_HOME:
+      if(state.seek.geoLocationId){
+        navigator.geolocation.clearWatch(state.seek.geoLocationId);
+      }
       return Object.assign({}, state, {
         game: Object.assign({}, initialState.game),
         hide: Object.assign({}, initialState.hide),
